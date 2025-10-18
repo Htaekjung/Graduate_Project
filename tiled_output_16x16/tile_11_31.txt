@@ -1,0 +1,16 @@
+85 90 93 94 96 95 94 90 8e 92 9d 9e a1 a4 aa a5
+8b 94 95 96 96 94 91 8d 8f 96 9c a2 9e a5 a6 a3
+92 98 96 96 97 94 92 8e 8f 97 9d a4 a1 a6 a6 a4
+95 98 94 94 96 93 92 90 93 98 a2 a2 a7 a5 a7 a4
+94 96 92 92 93 90 8f 8e 99 9d a4 a3 a8 a5 a5 a1
+94 96 93 94 93 8d 8c 8c 9a a1 a2 a6 a5 a7 a2 a2
+94 95 93 95 93 8c 8d 91 9b a2 a3 a6 a5 a6 a2 a5
+92 93 91 92 91 8c 90 97 9e a4 a8 a4 a7 a1 a2 a4
+95 92 8d 95 8c 91 94 9e a2 a4 a6 a5 a4 a5 a5 a5
+92 92 8f 94 8d 93 96 9e 9d a3 a6 a4 a5 a7 a6 a1
+8f 8f 8e 92 8e 96 9a 9f a5 a6 a5 a2 a3 a7 a9 a8
+8e 8c 8a 91 92 9b a0 a4 a8 a5 a5 a9 a9 a5 a4 a8
+96 8d 8a 92 96 9c 9f a3 a7 a4 a5 a9 a7 a1 a1 a7
+8b 83 83 90 9a a2 a7 ab a7 a7 a7 a5 a3 a3 a5 a9
+8a 86 8a 93 9b 9f a3 a3 a3 a6 aa ab a9 a7 a6 a5
+80 83 8d 97 a0 a5 aa a9 a7 a5 a5 a8 a8 a4 a4 a7

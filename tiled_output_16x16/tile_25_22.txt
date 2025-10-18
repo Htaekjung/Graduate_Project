@@ -1,0 +1,16 @@
+97 98 99 9b 9c 9d 9c 9c 9f a1 a2 a2 a1 a2 a5 a7
+98 9a 9c 9d 9d 9d 9c 9c a0 9f 9f 9f a0 a3 a6 a7
+96 99 9b 9d 9c 9b 9a 9b a0 9e 9d 9e a2 a5 a7 a7
+94 96 99 9a 9a 9a 9a 9a 9f 9d 9d a0 a5 a7 a7 a6
+96 97 98 99 9a 9b 9b 9b 9f 9d 9e a1 a4 a5 a5 a5
+98 98 98 99 9a 9b 9b 9b 9f 9e 9e a0 a2 a2 a4 a6
+95 96 97 98 99 99 9a 9a 9e 9d 9e a1 a1 a1 a2 a5
+91 94 96 98 98 99 9a 9a 9d 9d 9f a2 a3 a2 a2 a4
+93 97 96 9a 97 9c 99 99 9c 9e a0 a1 a2 a2 a3 a3
+93 94 92 96 96 9c 9b 9b 9e 9f 9f 9e 9e a1 a4 a6
+97 97 94 97 98 9e 9d 9c 9c 9e 9f 9e 9e a0 a2 a3
+96 95 94 95 97 9a 99 98 9c 9e 9f 9e 9e 9f a0 a0
+93 92 93 93 96 97 99 9a 9c 9e 9d 9b 9b 9e a1 a2
+94 93 94 93 96 96 9b 9d 98 9b 9d 9c 9c a0 a1 a1
+93 91 93 91 94 93 98 9a 95 9a 9e 9e 9f a1 a0 9e
+94 92 95 94 98 95 9a 9b 98 9c 9e 9c 9d 9f a0 9e

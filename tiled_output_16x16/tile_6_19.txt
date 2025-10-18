@@ -1,0 +1,16 @@
+cb c5 c1 bf c0 c7 c8 c1 c3 c2 c5 c8 c5 c7 c4 c4
+bc c5 c4 be bf be be c4 c4 c1 bf bb bc c1 c8 c7
+b6 bc c5 c8 c1 ba b9 bb bf c4 c5 c2 c1 bf c7 c3
+c0 b8 bd c7 c5 c0 ba b4 bb c6 c8 c8 bd b4 bc ba
+c6 c2 b8 b7 c2 c4 bf bd bf c4 bd c1 b1 ad b6 bd
+c3 c5 c0 b7 b8 c2 c6 c4 bb bb b2 be b4 b8 bc c4
+be c0 c7 c3 b8 b9 c0 bf b6 b5 b4 c2 bf c4 c1 c4
+bd c0 c4 c6 bf b0 ae ba c0 be c0 c6 c4 c8 c5 c6
+c0 bf b7 b1 b1 b0 b4 bf c7 c8 c2 c1 c3 cc c8 c1
+c3 b4 ac ab ad b8 c3 c5 c9 c9 c5 c4 c2 c8 c8 c8
+b1 aa af b8 ba bc c3 c6 c7 c9 c8 c7 c2 c4 c5 c9
+ac b2 b5 b9 c2 c3 c0 c1 c2 c6 c8 c8 c4 c3 c2 c3
+ad be c1 b9 bb c2 c1 bf c0 c3 c6 c5 c7 c7 c5 bf
+b4 ba c4 c3 b9 b9 c1 c2 c2 c3 c5 c2 c8 ca c9 c2
+c4 b6 b5 bd bd bc c0 c3 c6 c4 c4 c0 c6 c6 c8 c5
+c0 bc b4 b6 bf c0 be c1 c8 c4 c3 c0 c3 c0 c4 c5

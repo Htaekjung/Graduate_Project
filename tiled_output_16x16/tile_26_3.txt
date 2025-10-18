@@ -1,0 +1,16 @@
+ff ff ff ff ff ff ff ff fe fe ff fd f9 1f 1e 1e
+ff ff ff ff ff ff ff ff fe fe ff fd f8 1f 1e 1e
+ff ff ff ff ff ff ff ff fe fe ff fd f9 21 20 1f
+ff ff ff ff ff ff ff ff fe fe ff fd f9 21 21 1f
+ff ff ff ff ff ff ff ff fe fe ff fc f9 21 21 1f
+ff ff ff ff ff ff ff ff fe fe ff fc f9 23 22 20
+ff ff ff ff ff ff ff ff fe fe ff fd f9 25 25 23
+ff ff ff ff ff ff ff ff fe fe ff fd f9 26 26 24
+ff ff ff ff ff ff ff ff fe fe ff fd f9 22 21 23
+ff ff ff ff ff ff ff ff fe fe ff fd f9 25 24 25
+ff ff ff ff ff ff ff ff fe fe ff fc f9 2a 28 26
+ff ff ff ff ff ff ff ff fe fe ff fc f9 2b 2a 27
+ff ff ff ff ff ff ff ff fe fe ff fb f9 29 28 26
+ff ff ff ff ff ff ff ff fe fe ff fc f9 27 27 26
+ff ff ff ff ff ff ff ff fe fe ff fd f9 26 26 27
+ff ff ff ff ff ff ff ff fe fe fe fd fa 26 26 28

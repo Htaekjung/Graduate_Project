@@ -1,0 +1,16 @@
+b4 b3 b4 ba b8 bc bb bb bc bd bb bf be c2 c2 c4
+b4 b4 b6 b6 b6 b7 bb bb be bf bd bf be c1 c1 c2
+b2 b3 b8 b3 b2 b2 ba ba be bf bc bd bc c1 c0 c0
+b0 b2 b6 b1 b0 b2 b8 b7 ba bc b9 ba ba c0 c0 c0
+ad b0 b1 b2 b0 b5 b6 b3 b7 b9 b7 b8 b8 be bf c0
+ad ae ae b2 b0 b6 b4 b2 b7 b8 b6 b8 b7 bc bd c1
+ae ad ae b0 b0 b3 b4 b3 b8 b8 b6 b9 b6 b9 bc c2
+af ac af ae b0 af b5 b5 b7 b7 b5 b9 b6 b8 bb c2
+ad ac ad af b2 b4 b5 b5 b1 b6 ba bf ba b9 ba c0
+ad ae af af b1 b3 b4 b3 b2 b5 b6 bb ba bd bc bf
+aa ad ae ad ae b1 b2 b0 b4 b6 b6 b9 b8 bc bc be
+a8 ac ad ac ae b1 b2 b0 b3 b8 b9 b8 b4 b9 bb bf
+aa ac ad ad af b3 b4 b2 b2 b7 b7 b7 b3 b8 bc c0
+ab ac ad ad af b1 b2 b2 b4 b5 b4 b6 b5 ba ba bc
+ab ab ab ad ae ae b0 b2 b5 b4 b1 b6 b6 ba b8 b9
+ab aa ab ad ae ad b0 b4 b1 b1 b0 b6 b7 b9 b9 bb

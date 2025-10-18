@@ -1,0 +1,16 @@
+fe ff ff ff fe fe fe ff fe fe ff fc f6 6c 6b 6a
+fe fe ff ff fe fe fe ff fe fe ff fc f8 6d 6d 6d
+fe fe ff ff fe fe fe ff fe fe ff fc f7 6e 6e 6d
+fe ff ff ff ff fe fe ff fe fe ff fc f7 6c 6c 6b
+ff ff ff ff ff ff fe ff fe fe fe fb f6 6b 6b 6a
+ff ff ff ff ff ff fe ff fe fe fe fc f6 6c 6c 6b
+ff ff fe fe ff ff fe ff ff fe fe fc f7 6d 6c 6c
+ff ff fe fe ff ff fe ff ff fe fe fc f6 6c 6c 6b
+ff ff fe fe ff ff fe ff ff fe fe fc f7 69 6a 70
+ff ff fe fe ff ff fe ff ff ff fe fc f6 6a 69 6a
+ff ff fe fe ff ff fe ff fd fe fe fc f7 6f 6d 6c
+ff ff fe fe ff ff fe ff fe fe fe fb f7 6b 69 68
+fe ff fe fe ff ff fe ff fe fe ff fc f7 6a 68 6b
+fe fe ff ff ff ff ff ff fe fd fe fc f7 6b 6b 70
+fe fe ff ff ff ff ff ff fe fe ff fb f6 67 66 69
+fe fe ff ff ff ff ff ff fe fe ff fb f6 6c 6b 6b

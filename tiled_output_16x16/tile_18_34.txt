@@ -1,0 +1,16 @@
+c0 bf c0 c3 c5 c7 c8 c9 cb cd cf d0 d0 d0 d1 d1
+c2 c2 c3 c5 c8 c9 ca cb cd ce cf d0 d1 d1 d1 d2
+c3 c3 c4 c7 c9 cb cc cd ce cf cf d0 d1 d1 d1 d1
+c3 c3 c5 c9 cc cd ce d0 d0 cf cf cf d0 d1 d0 d0
+c6 c7 c9 cc cf d0 d1 d2 d0 cf cf cf cf d0 cf cf
+ca ca cd cf d0 d0 d1 d1 d1 d0 cf ce ce ce ce ce
+cb cc ce d0 d1 d0 cf d0 d1 d0 cf ce cd cd cd ce
+cc cd cf d1 d2 d0 d0 d1 d0 d0 cf cd cb cb cc cd
+cc ce cf d0 d0 d1 d1 cf cd cd cd cc cc cc cd ce
+ce cf d0 d0 d0 d0 cf ce ce cd cc cc cc cc cd cd
+cf cf d0 d0 cf cf ce cd cf ce cc cc cc cc cc cb
+ce ce ce cf cf cf cf ce ce ce cd cc cc cc cc cc
+ce cd cd ce cf cf cf ce cd ce ce ce cd cc cd ce
+cf cd cd cd ce ce ce ce cd ce cf cf ce cd ce d0
+cf cd cc cd ce ce cd ce ce cf d0 d0 cf cf d0 d1
+ce cc cb cd ce ce ce cf cf d0 d0 d0 d0 d0 d0 d0

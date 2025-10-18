@@ -1,0 +1,16 @@
+7b 7d 7c 78 7d 7c 82 82 7b 79 80 84 82 84 7f 89
+79 7c 7b 78 7d 7c 82 81 7c 78 7e 82 82 85 7f 87
+7a 7d 7b 78 7c 7c 81 80 7c 7a 7f 84 83 86 81 87
+7b 7e 7a 79 7c 7d 81 82 7a 7b 81 86 83 84 81 88
+7a 7d 79 7a 7d 7e 80 81 7a 7b 7d 83 81 83 81 86
+79 7d 7a 7d 7d 7d 7c 7d 7e 7c 79 7f 81 84 82 83
+7b 7e 79 7d 7c 7d 7b 7c 7f 7d 7a 80 80 82 81 81
+7a 7d 77 7b 7b 7e 7f 81 7a 7d 7d 82 7f 7e 7d 7f
+78 78 7b 7d 7b 7b 7d 7d 7b 7d 7b 80 7d 80 82 80
+7a 7a 7c 7d 7b 7b 7c 7b 7d 7e 7d 83 7e 7e 81 83
+7a 7b 7c 7c 7a 7d 7e 7b 81 7e 7b 83 7f 7e 81 83
+78 79 7b 7a 79 7d 7e 7b 83 7e 78 7f 7e 7f 80 7f
+78 79 7a 79 78 7b 7c 79 7e 7e 7a 7f 7d 7e 7f 7b
+79 7a 7b 7b 7a 7d 7e 7c 79 7e 7f 83 7e 7d 7e 7c
+7a 7a 7c 7e 7d 7e 80 7f 7b 7e 7f 85 7f 7e 7f 7f
+7b 7a 7d 7e 7c 7b 7c 7d 82 7e 7b 83 81 80 81 82

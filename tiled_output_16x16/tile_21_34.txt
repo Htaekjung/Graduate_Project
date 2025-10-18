@@ -1,0 +1,16 @@
+d4 d4 d5 d5 d6 d5 d5 d6 d5 d5 d5 d5 d5 d4 d3 d3
+d6 d6 d6 d7 d7 d7 d7 d7 d4 d3 d2 d2 d1 d1 d0 cf
+d6 d7 d7 d7 d7 d8 d7 d7 d5 d4 d2 d1 d2 d1 d0 cf
+d6 d7 d6 d6 d6 d6 d6 d5 d3 d2 cf cf cf cf cd cc
+d6 d6 d6 d4 d4 d4 d3 d1 d1 d0 ce cd ce cd cd cc
+d6 d6 d5 d3 d3 d3 d2 cf d0 cf ce ce ce ce ce ce
+d6 d6 d5 d3 d2 d3 d1 ce cb cc cc cc cc cc cd cd
+d5 d6 d4 d2 d2 d3 d1 ce cc cd ce cf ce cf cf d0
+d4 d3 d2 d1 d0 d0 cf ce cf cf cf d1 d1 d1 d1 d2
+d4 d3 d2 d1 d1 d1 d0 d0 d2 d1 d1 d2 d2 d1 d0 d1
+d3 d2 d1 d1 d1 d1 d1 d0 d4 d3 d3 d3 d3 d1 d1 d2
+d2 d2 d2 d1 d1 d2 d2 d2 d4 d4 d4 d4 d4 d3 d2 d3
+d4 d4 d3 d3 d3 d4 d4 d5 d5 d4 d4 d4 d4 d3 d2 d3
+d4 d4 d4 d4 d4 d4 d5 d5 d6 d5 d4 d4 d3 d2 d1 d1
+d4 d4 d4 d4 d3 d3 d4 d5 d5 d4 d3 d3 d2 d1 d0 d0
+d5 d5 d5 d5 d4 d4 d4 d5 d3 d2 d2 d2 d2 d1 d0 d1

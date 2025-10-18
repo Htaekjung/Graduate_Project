@@ -1,0 +1,16 @@
+93 b7 c6 ce d5 db db df db db db da d8 d5 d3 d4
+97 b9 c8 cf d6 db db de dc db da da d8 d5 d4 d4
+9c bc ca d1 d8 dc db de dc db d9 d8 d7 d5 d4 d3
+a1 bd ca d3 d9 de dd df dd db d9 d8 d7 d5 d3 d3
+a6 bf cb d4 d9 de de df de db d9 d7 d6 d4 d2 d2
+ad c2 cc d5 d9 dd dd dd dd db d9 d7 d5 d3 d2 d2
+b3 c5 ce d7 d9 dd dd dc dc da d9 d7 d5 d3 d2 d2
+b6 c6 ce d7 d9 dd dd dd da d9 d9 d7 d5 d3 d2 d3
+bd c8 d2 d6 da dc dc dd d9 d8 d7 d7 d5 d3 d2 d3
+c0 ca d2 d6 da dd dc db d8 d7 d7 d6 d4 d2 d3 d4
+c3 cc d3 d7 db dd db d9 d7 d6 d5 d4 d3 d2 d3 d5
+c6 cf d5 d8 db dc da d8 d6 d4 d3 d3 d3 d2 d2 d3
+c8 d1 d6 d8 db db d9 d7 d4 d2 d1 d2 d3 d3 d1 d0
+ca d2 d7 d8 da da d7 d5 d2 d1 d0 d2 d3 d2 d0 cf
+cc d3 d7 d8 d9 d9 d5 d2 d0 d0 d0 d1 d1 d1 d0 d0
+ce d4 d7 d7 d9 d9 d4 cf cf cf d0 d0 d0 cf d0 d2
