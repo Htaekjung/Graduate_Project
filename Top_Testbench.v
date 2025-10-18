@@ -1,12 +1,12 @@
 `timescale 1ns / 1ps
 
-module tb_Bram_interface;
+module tb_Topmodule;
 
     // ===================================================================
     //  중요: 시뮬레이션을 위해 RAM_DEPTH를 작은 값으로 변경하세요!
     //  307200으로 시뮬레이션하면 몇 시간이 걸릴 수 있습니다.
     // ===================================================================
-    localparam RAM_DEPTH = 10240;
+    localparam RAM_DEPTH = 512;
     // localparam RAM_DEPTH = 307200; // 최종 검증 시에만 사용하세요.
 
     localparam RAM_WIDTH = 8;
@@ -27,14 +27,16 @@ module tb_Bram_interface;
     integer error_count = 0;
 
     // --- DUT Instantiation ---
-    Bram_interface #(
-        .RAM_WIDTH(RAM_WIDTH),
-        .RAM_DEPTH(RAM_DEPTH),
-        .IMG_WIDTH(640),
-        .IMG_HEIGHT(480),
-        .TILE_WIDTH(16),
-        .TILE_HEIGHT(16)
-    ) DUT (
+    Top_module 
+    // #(
+    //     .RAM_WIDTH(RAM_WIDTH),
+    //     .RAM_DEPTH(RAM_DEPTH),
+    //     .IMG_WIDTH(32),
+    //     .IMG_HEIGHT(16),
+    //     .TILE_WIDTH(16),
+    //     .TILE_HEIGHT(16)
+    // ) 
+    DUT (
         .iClk(iClk),
         .iRst(iRst),
         .iData(iData),
@@ -53,7 +55,7 @@ module tb_Bram_interface;
         iData = 0;
 
         // [수정 2] 시뮬레이션 시작 시 image.txt 파일을 메모리로 로드
-        $readmemh("image.txt", image_data_from_file);
+        $readmemh("image1.txt", image_data_from_file);
         $display("INFO: image.txt loaded into testbench memory.");
         
         // 2. Reset sequence

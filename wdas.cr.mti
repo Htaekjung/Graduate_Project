@@ -1,0 +1,29 @@
+C:/Users/SAMSUNG/Documents/Graduate_Project/Top_module.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/Graduate_Project/Top_module.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module Top_module
+
+Top level modules:
+	Top_module
+
+} {} {}} C:/Users/SAMSUNG/Documents/Graduate_Project/Bram_interface.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/Graduate_Project/Bram_interface.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module Bram_interface
+
+Top level modules:
+	Bram_interface
+
+} {} {}} C:/Users/SAMSUNG/Documents/Graduate_Project/Top_Testbench.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/Graduate_Project/Top_Testbench.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module tb_Topmodule
+
+Top level modules:
+	tb_Topmodule
+
+} {} {}} C:/Users/SAMSUNG/Documents/Graduate_Project/BRAM.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/Graduate_Project/BRAM.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module Bram
+
+Top level modules:
+	Bram
+
+} {} {}}

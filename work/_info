@@ -1,0 +1,120 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/SAMSUNG/Desktop/University/Graduate School - EASY LAB/2. Graduate_Project/My_Project/My_Project
+vBram
+!s110 1760760439
+!i10b 1
+!s100 BBb`d]f6m<:7koX158_CO0
+IP<ThC?83dTYK[:kSS6Mdd3
+Z0 VDg1SIo80bB@j0V0VzS_@n1
+Z1 dC:/Users/SAMSUNG/Documents/Graduate_Project
+w1760749134
+8C:/Users/SAMSUNG/Documents/Graduate_Project/BRAM.v
+FC:/Users/SAMSUNG/Documents/Graduate_Project/BRAM.v
+L0 1
+Z2 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1760760439.000000
+!s107 C:/Users/SAMSUNG/Documents/Graduate_Project/BRAM.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/Graduate_Project/BRAM.v|
+!i113 1
+Z3 o-work work
+Z4 tCvgOpt 0
+n@bram
+vBram_interface
+!s110 1760767482
+!i10b 1
+!s100 808E2CAnT@H6ED?jS:WdI1
+IV:biBBGTV;2QR?NSk5?X<0
+R0
+R1
+w1760767434
+8C:/Users/SAMSUNG/Documents/Graduate_Project/Bram_interface.v
+FC:/Users/SAMSUNG/Documents/Graduate_Project/Bram_interface.v
+L0 2
+R2
+r1
+!s85 0
+31
+!s108 1760767482.000000
+!s107 C:/Users/SAMSUNG/Documents/Graduate_Project/Bram_interface.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/Graduate_Project/Bram_interface.v|
+!i113 1
+R3
+R4
+n@bram_interface
+vtb_Topmodule
+!s110 1760766859
+!i10b 1
+!s100 <JcV66JhOJo@:S96eb4QR2
+IMYC7NI]M6kb405_lPTzIQ3
+R0
+R1
+w1760766856
+8C:/Users/SAMSUNG/Documents/Graduate_Project/Top_Testbench.v
+FC:/Users/SAMSUNG/Documents/Graduate_Project/Top_Testbench.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1760766859.000000
+!s107 C:/Users/SAMSUNG/Documents/Graduate_Project/Top_Testbench.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/Graduate_Project/Top_Testbench.v|
+!i113 1
+R3
+R4
+ntb_@topmodule
+vTop_module
+!s110 1760768603
+!i10b 1
+!s100 [30m03<DkYdUD@ngOcGi`3
+IZ;CCRlII]:d09:bbgkA?@1
+R0
+R1
+w1760768601
+8C:/Users/SAMSUNG/Documents/Graduate_Project/Top_module.v
+FC:/Users/SAMSUNG/Documents/Graduate_Project/Top_module.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1760768603.000000
+!s107 C:/Users/SAMSUNG/Documents/Graduate_Project/Top_module.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/Graduate_Project/Top_module.v|
+!i113 1
+R3
+R4
+n@top_module
+vWorkloadAllocator
+!s110 1760768464
+!i10b 1
+!s100 QoPlZBmc1O:HckbLH?6L11
+ICE=65AIP40_K[0k:6bIoX0
+R0
+R1
+w1760768363
+8C:/Users/SAMSUNG/Documents/Graduate_Project/Workload_Allocator.v
+FC:/Users/SAMSUNG/Documents/Graduate_Project/Workload_Allocator.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1760768464.000000
+!s107 C:/Users/SAMSUNG/Documents/Graduate_Project/Workload_Allocator.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/Graduate_Project/Workload_Allocator.v|
+!i113 1
+R3
+R4
+n@workload@allocator

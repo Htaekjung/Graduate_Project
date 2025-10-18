@@ -1,11 +1,11 @@
 
 module Bram_interface#(
     parameter RAM_WIDTH = 8,                       
-    parameter RAM_DEPTH = 10240,                     
+    parameter RAM_DEPTH = 512,                     
     parameter RAM_PERFORMANCE = "HIGH_PERFORMANCE", 
     parameter INIT_FILE = "",
-    parameter IMG_WIDTH   = 640, // 전체 이미지의 가로 크기
-    parameter IMG_HEIGHT  = 480,
+    parameter IMG_WIDTH   = 32, // 전체 이미지의 가로 크기
+    parameter IMG_HEIGHT  = 16,
     parameter TILE_WIDTH  = 16,  // 타일의 가로 크기
     parameter TILE_HEIGHT = 16  // 타일의 세로 크기                       
 ) (
@@ -13,7 +13,8 @@ module Bram_interface#(
     input iRst,
     input [7:0] iData,
     output reg [10:0] oDone_sig,
-    output [7:0] oData
+    output [7:0] oData,
+    output reg enb
 );
 localparam NUM_TILES_X = IMG_WIDTH / TILE_WIDTH;   // 40 (가로 타일 개수)
 localparam NUM_TILES_Y = IMG_HEIGHT / TILE_HEIGHT; // 30 (세로 타일 개수)
@@ -33,7 +34,7 @@ localparam NUM_TILES_Y = IMG_HEIGHT / TILE_HEIGHT; // 30 (세로 타일 개수)
     wire [RAM_WIDTH-1:0] dina;
     wire rsta, rstb;
     wire clka, clkb;
-    reg ena, enb;
+    reg ena;
     reg regceb;
     wire [7:0] doutb;
 
@@ -175,5 +176,4 @@ end
     end
 
     assign oData = doutb;
-    //assign oDone_sig = (1 < addrb && addrb < RAM_DEPTH+2 ) ? 1'b1 : 1'b0;
 endmodule
