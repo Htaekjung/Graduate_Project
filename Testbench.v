@@ -6,7 +6,7 @@ module tb_Bram_interface;
     //  중요: 시뮬레이션을 위해 RAM_DEPTH를 작은 값으로 변경하세요!
     //  307200으로 시뮬레이션하면 몇 시간이 걸릴 수 있습니다.
     // ===================================================================
-    localparam RAM_DEPTH = 100;
+    localparam RAM_DEPTH = 10240;
     // localparam RAM_DEPTH = 307200; // 최종 검증 시에만 사용하세요.
 
     localparam RAM_WIDTH = 8;
@@ -29,7 +29,11 @@ module tb_Bram_interface;
     // --- DUT Instantiation ---
     Bram_interface #(
         .RAM_WIDTH(RAM_WIDTH),
-        .RAM_DEPTH(RAM_DEPTH)
+        .RAM_DEPTH(RAM_DEPTH),
+        .IMG_WIDTH(640),
+        .IMG_HEIGHT(480),
+        .TILE_WIDTH(16),
+        .TILE_HEIGHT(16)
     ) DUT (
         .iClk(iClk),
         .iRst(iRst),
