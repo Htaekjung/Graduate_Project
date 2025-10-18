@@ -1,0 +1,35 @@
+onerror {resume}
+quietly WaveActivateNextPane {} 0
+add wave -noupdate /tb_Topmodule/DUT/workload_allocator_sad/iClk
+add wave -noupdate /tb_Topmodule/DUT/workload_allocator_sad/iRst
+add wave -noupdate /tb_Topmodule/DUT/workload_allocator_sad/iData
+add wave -noupdate /tb_Topmodule/DUT/workload_allocator_sad/iValid
+add wave -noupdate /tb_Topmodule/DUT/workload_allocator_sad/oRouteToCnn
+add wave -noupdate /tb_Topmodule/DUT/workload_allocator_sad/oDecisionValid
+add wave -noupdate -radix hexadecimal /tb_Topmodule/DUT/workload_allocator_sad/tile_buffer
+add wave -noupdate -radix unsigned /tb_Topmodule/DUT/workload_allocator_sad/pixel_count
+add wave -noupdate -radix unsigned /tb_Topmodule/DUT/workload_allocator_sad/pixel_sum
+add wave -noupdate -radix unsigned /tb_Topmodule/DUT/workload_allocator_sad/sad_accumulator
+add wave -noupdate -radix hexadecimal /tb_Topmodule/DUT/workload_allocator_sad/abs_diff
+add wave -noupdate -radix unsigned /tb_Topmodule/DUT/workload_allocator_sad/tile_average
+add wave -noupdate -radix hexadecimal /tb_Topmodule/DUT/workload_allocator_sad/pixel_from_buffer
+add wave -noupdate -radix hexadecimal /tb_Topmodule/DUT/workload_allocator_sad/diff
+add wave -noupdate /tb_Topmodule/DUT/workload_allocator_sad/state
+TreeUpdate [SetDefaultTree]
+WaveRestoreCursors {{Cursor 1} {7710372 ps} 0}
+quietly wave cursor active 1
+configure wave -namecolwidth 355
+configure wave -valuecolwidth 40
+configure wave -justifyvalue left
+configure wave -signalnamewidth 0
+configure wave -snapdistance 10
+configure wave -datasetprefix 0
+configure wave -rowmargin 4
+configure wave -childrowmargin 2
+configure wave -gridoffset 0
+configure wave -gridperiod 1
+configure wave -griddelta 40
+configure wave -timeline 0
+configure wave -timelineunits ps
+update
+WaveRestoreZoom {7651543 ps} {8050123 ps}

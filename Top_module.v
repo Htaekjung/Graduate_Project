@@ -50,12 +50,10 @@ module Top_module (
         end
     end
 
-    WorkloadAllocator #(
+    WorkloadAllocator_SAD #(
         .TILE_WIDTH(16),
-        .IMG_WIDTH(32),
-        .EDGE_THRESHOLD(60),
-        .ROUTING_THRESHOLD(80)
-    ) workload_allocator (
+        .ROUTING_THRESHOLD_SAD(80)
+    ) workload_allocator_sad (
         .iClk(iClk),
         .iRst(iRst),
         .iData(wData),

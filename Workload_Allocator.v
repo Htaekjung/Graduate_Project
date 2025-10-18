@@ -1,105 +1,114 @@
 `timescale 1ns / 1ps
 
-module WorkloadAllocator #(
-        //--- Parameters ---//
-    parameter TILE_WIDTH        = 16,
-    parameter IMG_WIDTH         = 640, // Needed for line buffer size
-    parameter EDGE_THRESHOLD    = 50,  // Gradient magnitude threshold to be an "edge"
-    parameter ROUTING_THRESHOLD = 64  // If edge_count > 64, it's a complex tile (25% density)
+module WorkloadAllocator_SAD #(
+    //--- Parameters ---//
+    parameter TILE_WIDTH            = 16,
+    parameter ROUTING_THRESHOLD_SAD = 10000 // SAD 값이 이보다 크면 복잡한 타일로 간주
 ) (
     // System Signals
     input  wire         iClk,
     input  wire         iRst,
 
-    // Input Pixel Stream
-    input  wire [7:0]   iData, // 8-bit grayscale pixel
-    input  wire         iValid, // Input pixel is valid
+    // Input Pixel Stream (Tiled)
+    input  wire [7:0]   iData,
+    input  wire         iValid,
 
     // Output Decision
-    output reg          oRouteToCnn, // 1: Route to CNN, 0: Route to SNN
-    output reg          oDecisionValid // Routing decision is valid for one cycle
+    output reg          oRouteToCnn,
+    output reg          oDecisionValid
 );
 
+//--- FSM State Definition ---//
+localparam STATE_IDLE       = 2'b00;
+localparam STATE_SUM        = 2'b01; // 1단계: 합 계산 및 버퍼링
+localparam STATE_CALC_SAD   = 2'b10; // 2단계: SAD 계산
+localparam STATE_DECIDE     = 2'b11; // 최종 결정
+
 //--- Registers & Wires ---//
-// Line Buffers to create a 3x3 window
-reg  [7:0] line_buffer1 [0:IMG_WIDTH-1];
-reg  [7:0] line_buffer2 [0:IMG_WIDTH-1];
+reg [1:0]   state;
 
-// 3x3 Pixel Window Registers
-reg  [7:0] p_win [0:2][0:2];
+// Internal buffer to store one tile
+reg [7:0]   tile_buffer [0:(TILE_WIDTH*TILE_WIDTH)-1];
 
-// Counters
-reg  [8:0] pixel_count;      // Counts pixels within a tile (0-255)
-reg  [8:0] edge_pixel_count; // Counts edge pixels within a tile
+// Counters and Accumulators
+reg [8:0]   pixel_count;       // Counts from 0-255 for both stages
+reg [15:0]  pixel_sum;         // Accumulates sum of pixels (max 255*256=65280)
+reg [15:0]  sad_accumulator;   // Accumulates SAD value (max 255*256=65280)
 
-// Sobel Operator intermediate values
-wire [9:0] grad_x;
-wire [9:0] grad_y;
-wire [9:0] grad_mag;
+reg [7:0]   tile_average;      // Stores the calculated average of the tile
 
+wire [7:0]  pixel_from_buffer;
+wire [8:0]  diff;
+wire [7:0]  abs_diff;
 
-// 1. Line Buffer and 3x3 Window Generation
-// This block creates a sliding 3x3 window from the input pixel stream
+assign pixel_from_buffer = tile_buffer[pixel_count];
+assign diff = pixel_from_buffer - tile_average;
+assign abs_diff = (diff[8] == 1'b1) ? -diff : diff; // Check sign bit for absolute value
+
 always @(posedge iClk) begin
     if (!iRst) begin
-        // Reset logic if needed
-    end else if (iValid) begin
-        p_win[0][0] <= p_win[0][1];
-        p_win[0][1] <= p_win[0][2];
-        p_win[0][2] <= line_buffer2[pixel_count % IMG_WIDTH];
-
-        p_win[1][0] <= p_win[1][1];
-        p_win[1][1] <= p_win[1][2];
-        p_win[1][2] <= line_buffer1[pixel_count % IMG_WIDTH];
-
-        p_win[2][0] <= p_win[2][1];
-        p_win[2][1] <= p_win[2][2];
-        p_win[2][2] <= iData;
-
-        line_buffer2[pixel_count % IMG_WIDTH] <= line_buffer1[pixel_count % IMG_WIDTH];
-        line_buffer1[pixel_count % IMG_WIDTH] <= iData;
-    end
-end
-
-// 2. Sobel Operator (Hardware-Friendly)
-// Calculates Gx, Gy, and approximates magnitude as |Gx| + |Gy|
-assign grad_x = (p_win[0][2] - p_win[0][0]) + ((p_win[1][2] - p_win[1][0]) << 1) + (p_win[2][2] - p_win[2][0]);
-assign grad_y = (p_win[2][0] - p_win[0][0]) + ((p_win[2][1] - p_win[0][1]) << 1) + (p_win[2][2] - p_win[0][2]);
-
-// Using conditional operator for absolute value
-assign grad_mag = (grad_x > 0 ? grad_x : -grad_x) + (grad_y > 0 ? grad_y : -grad_y);
-
-// 3. Counter and Decision Logic
-always @(posedge iClk) begin
-    if (!iRst) begin
-        pixel_count      <= 0;
-        edge_pixel_count <= 0;
-        oRouteToCnn      <= 1'b0;
-        oDecisionValid   <= 1'b0;
+        // Reset all registers
+        state           <= STATE_IDLE;
+        pixel_count     <= 0;
+        pixel_sum       <= 0;
+        sad_accumulator <= 0;
+        tile_average    <= 0;
+        oRouteToCnn     <= 1'b0;
+        oDecisionValid  <= 1'b0;
     end else begin
+        // Default outputs
         oDecisionValid <= 1'b0;
 
-        if (iValid) begin
-            if (pixel_count == (TILE_WIDTH * TILE_WIDTH - 1)) begin
-                if (edge_pixel_count > ROUTING_THRESHOLD) begin
+        case (state)
+            STATE_IDLE: begin
+                if (iValid) begin
+                    // New tile starts, begin Stage 1
+                    state           <= STATE_SUM;
+                    pixel_count     <= 1; // Start counting from 1 for the first pixel
+                    pixel_sum       <= iData;
+                    tile_buffer[0]  <= iData;
+                end
+            end
+
+            STATE_SUM: begin // Stage 1: Buffering and Summing
+                if (pixel_count == (TILE_WIDTH * TILE_WIDTH - 1)) begin
+                    // Last pixel of the tile received
+                    state           <= STATE_CALC_SAD;
+                    pixel_sum       <= pixel_sum + iData;
+                    tile_buffer[pixel_count] <= iData;
+                    tile_average    <= (pixel_sum + iData) >> 8; // Calculate average (divide by 256)
+                    pixel_count     <= 0; // Reset for Stage 2
+                    sad_accumulator <= 0; // Reset for Stage 2
+                end else begin
+                    // Continue summing and buffering
+                    pixel_count     <= pixel_count + 1;
+                    pixel_sum       <= pixel_sum + iData;
+                    tile_buffer[pixel_count] <= iData;
+                end
+            end
+
+            STATE_CALC_SAD: begin // Stage 2: Calculating SAD
+                sad_accumulator <= sad_accumulator + abs_diff;
+
+                if (pixel_count == (TILE_WIDTH * TILE_WIDTH - 1)) begin
+                    // Finished calculating SAD for all pixels
+                    state <= STATE_DECIDE;
+                end else begin
+                    pixel_count <= pixel_count + 1;
+                end
+            end
+
+            STATE_DECIDE: begin // Make the final decision
+                if (sad_accumulator > ROUTING_THRESHOLD_SAD) begin
                     oRouteToCnn <= 1'b1; // Complex tile -> route to CNN
                 end else begin
                     oRouteToCnn <= 1'b0; // Simple tile -> route to SNN
                 end
                 
-                oDecisionValid <= 1'b1; // The decision is valid for this one clock cycle
-                
-                pixel_count      <= 0;
-                edge_pixel_count <= 0;
-
-            end else begin
-                pixel_count <= pixel_count + 1;
-                
-                if (grad_mag > EDGE_THRESHOLD) begin
-                    edge_pixel_count <= edge_pixel_count + 1;
-                end
+                oDecisionValid <= 1'b1; // Decision is valid for one cycle
+                state          <= STATE_IDLE; // Go back to IDLE to wait for the next tile
             end
-        end
+        endcase
     end
 end
 
