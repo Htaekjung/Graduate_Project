@@ -2,6 +2,7 @@ module Top_module (
     input iClk,
     input iRst,
 
+    output 
 );
 
 
@@ -9,16 +10,21 @@ module Top_module (
 
 
 Bram_interface #(
-    .RAM_WIDTH(8),                        // 파라미터 설정
-    .RAM_DEPTH(100),
+    .RAM_WIDTH(8),
+    .RAM_DEPTH(10240),
     .RAM_PERFORMANCE("HIGH_PERFORMANCE"),
-    .INIT_FILE("")                        
-) u_bram_interface (                      // 인스턴스 이름 (u_ 접두 추천)
-    .iClk(iClk),                           // 포트 매핑
+    .INIT_FILE(""),   // 초기화 파일이 있다면 여기에 입력
+    .IMG_WIDTH(640),
+    .IMG_HEIGHT(480),
+    .TILE_WIDTH(16),
+    .TILE_HEIGHT(16)
+) m1 (
+    .iClk(iClk),
     .iRst(iRst),
-    .iData(data_in),
-    .done_sig(done_flag),
-    .oData(data_out)
+    .iData(iData),
+
+    .oDone_sig(done_sig),
+    .oData(oData)
 );
 
 

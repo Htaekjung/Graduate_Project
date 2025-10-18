@@ -12,7 +12,7 @@ module Bram_interface#(
     input iClk,
     input iRst,
     input [7:0] iData,
-    output done_sig,
+    output reg [10:0] oDone_sig,
     output [7:0] oData
 );
 localparam NUM_TILES_X = IMG_WIDTH / TILE_WIDTH;   // 40 (가로 타일 개수)
@@ -87,49 +87,45 @@ localparam NUM_TILES_Y = IMG_HEIGHT / TILE_HEIGHT; // 30 (세로 타일 개수)
 always @(posedge iClk) begin
     if (!iRst) begin
         // 리셋: 모든 주소와 카운터 초기화
-        addra <= 0;
-        addrb <= 0;
-        ena   <= 1'b1;
+        addra        <= 0;
+        addrb        <= 0;
+        ena          <= 1'b1;
         tile_row_cnt <= 0;
         tile_col_cnt <= 0;
         tile_x_cnt   <= 0;
         tile_y_cnt   <= 0;
+        oDone_sig    <= 11'd0; 
     end else if (state == WRITE) begin
-        // 쓰기 상태 로직 (기존과 동일)
+        // 쓰기 상태 로직
         ena   <= 1'b1;
         addra <= addra + 1;
     end else if (state == DELAY) begin
-        // DELAY: READ 시작 전 모든 카운터 초기화 (⭐타일 카운터 초기화 추가)
-        ena <= 1'b0;
+        // DELAY: READ 시작 전 카운터 초기화
+        ena          <= 1'b0;
         tile_row_cnt <= 0;
         tile_col_cnt <= 0;
         tile_x_cnt   <= 0;
         tile_y_cnt   <= 0;
     end else if (state == READ) begin
-        // --- 여기가 수정된 핵심 로직입니다 ---
-
-        // 1. 주소 계산: 4개의 카운터를 모두 사용하여 현재 읽어야 할 픽셀의 절대 주소 계산
         addrb <= ((tile_y_cnt * TILE_HEIGHT) + tile_row_cnt) * IMG_WIDTH + 
                  ((tile_x_cnt * TILE_WIDTH) + tile_col_cnt);
 
-        // 2. 계층적 카운터 업데이트
-        // 가장 안쪽 카운터(tile_col_cnt)부터 1씩 증가시키고,
-        // 최대값에 도달하면 상위 카운터를 증가시키는 방식
         if (tile_col_cnt == TILE_WIDTH - 1) begin
             tile_col_cnt <= 0; // 열 카운터 리셋
             if (tile_row_cnt == TILE_HEIGHT - 1) begin
                 tile_row_cnt <= 0; // 행 카운터 리셋 (타일 하나 완료)
                 
-                // 다음 타일로 이동
+                oDone_sig <= oDone_sig + 1;
+                
                 if (tile_x_cnt == NUM_TILES_X - 1) begin
-                    tile_x_cnt <= 0; // 가로 타일 카운터 리셋
+                    tile_x_cnt <= 0;
                     if (tile_y_cnt == NUM_TILES_Y - 1) begin
-                        tile_y_cnt <= 0; // 모든 타일 완료 -> 다음 동작을 위해 리셋
+                        tile_y_cnt <= 0;
                     end else begin
-                        tile_y_cnt <= tile_y_cnt + 1; // 다음 타일 줄로 이동
+                        tile_y_cnt <= tile_y_cnt + 1;
                     end
                 end else begin
-                    tile_x_cnt <= tile_x_cnt + 1; // 다음 가로 타일로 이동
+                    tile_x_cnt <= tile_x_cnt + 1;
                 end
             end else begin
                 tile_row_cnt <= tile_row_cnt + 1; // 타일 내 다음 행으로 이동
@@ -138,7 +134,8 @@ always @(posedge iClk) begin
             tile_col_cnt <= tile_col_cnt + 1; // 타일 내 다음 열로 이동
         end
     end else if (state == DONE) begin
-        // DONE 상태 로직 (필요시 구현)
+        // DONE 상태 진입 시 oDone_sig를 리셋할 필요가 있다면 여기에 추가
+        oDone_sig <= 11'd0;
     end else begin
         // 기타 상태
     end
@@ -178,5 +175,5 @@ end
     end
 
     assign oData = doutb;
-    assign done_sig = (1 < addrb && addrb < RAM_DEPTH+2 ) ? 1'b1 : 1'b0;
+    //assign oDone_sig = (1 < addrb && addrb < RAM_DEPTH+2 ) ? 1'b1 : 1'b0;
 endmodule
