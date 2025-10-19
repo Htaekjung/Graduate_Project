@@ -9,6 +9,7 @@ module Top_module (
     // BRAM Interface → WorkloadAllocator 연결 신호
     wire [7:0] wData;           // BRAM output data
     wire       done_sig;        // BRAM operation done signal
+    reg [1:0] counter;
 
     // WorkloadAllocator 내부 제어 신호
     wire       oRouteToCnn;     // Routing decision
@@ -32,7 +33,6 @@ module Top_module (
         .oDone_sig(done_sig),  // output from BRAM module
         .oData(wData)         // BRAM read data
     );
-    reg [1:0] counter;
     always @(posedge iClk) begin
         if(!iRst) begin
             counter <= 0;
@@ -52,7 +52,7 @@ module Top_module (
 
     WorkloadAllocator_SAD #(
         .TILE_WIDTH(16),
-        .ROUTING_THRESHOLD_SAD(80)
+        .ROUTING_THRESHOLD_SAD(270)
     ) workload_allocator_sad (
         .iClk(iClk),
         .iRst(iRst),

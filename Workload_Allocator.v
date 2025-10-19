@@ -3,13 +3,13 @@
 module WorkloadAllocator_SAD #(
     //--- Parameters ---//
     parameter TILE_WIDTH            = 16,
-    parameter ROUTING_THRESHOLD_SAD = 10000 // SAD 값이 이보다 크면 복잡한 타일로 간주
+    parameter ROUTING_THRESHOLD_SAD = 10000
 ) (
     // System Signals
     input  wire         iClk,
     input  wire         iRst,
 
-    // Input Pixel Stream (Tiled)
+    // Input Pixel Stream (Continuous Tiled)
     input  wire [7:0]   iData,
     input  wire         iValid,
 
@@ -18,97 +18,103 @@ module WorkloadAllocator_SAD #(
     output reg          oDecisionValid
 );
 
-//--- FSM State Definition ---//
-localparam STATE_IDLE       = 2'b00;
-localparam STATE_SUM        = 2'b01; // 1단계: 합 계산 및 버퍼링
-localparam STATE_CALC_SAD   = 2'b10; // 2단계: SAD 계산
-localparam STATE_DECIDE     = 2'b11; // 최종 결정
-
 //--- Registers & Wires ---//
-reg [1:0]   state;
 
-// Internal buffer to store one tile
-reg [7:0]   tile_buffer [0:(TILE_WIDTH*TILE_WIDTH)-1];
+// Double Buffers for pipelining
+reg [7:0]   tile_buffer_A [0:(TILE_WIDTH*TILE_WIDTH)-1];
+reg [7:0]   tile_buffer_B [0:(TILE_WIDTH*TILE_WIDTH)-1];
 
-// Counters and Accumulators
-reg [8:0]   pixel_count;       // Counts from 0-255 for both stages
-reg [15:0]  pixel_sum;         // Accumulates sum of pixels (max 255*256=65280)
-reg [15:0]  sad_accumulator;   // Accumulates SAD value (max 255*256=65280)
+// A single counter for driving both pipeline stages
+reg [8:0]   pixel_count; // Counts from 0-255 and wraps around
 
-reg [7:0]   tile_average;      // Stores the calculated average of the tile
+// Buffer management
+reg         write_to_A; // 1: Stage 1 writes to Buffer A, Stage 2 reads from B
+                        // 0: Stage 1 writes to Buffer B, Stage 2 reads from A
 
-wire [7:0]  pixel_from_buffer;
-wire [8:0]  diff;
-wire [7:0]  abs_diff;
+// --- Stage 1: Summation Pipeline Registers --- //
+reg [15:0]  s1_pixel_sum;
 
-assign pixel_from_buffer = tile_buffer[pixel_count];
-assign diff = pixel_from_buffer - tile_average;
-assign abs_diff = (diff[8] == 1'b1) ? -diff : diff; // Check sign bit for absolute value
+// --- Stage 2: SAD Calculation Pipeline Registers --- //
+reg [15:0]  s2_pixel_sum_reg;
+reg [7:0]   s2_tile_average;
+reg [15:0]  s2_sad_accumulator;
 
+// Wires for Stage 2 SAD calculation
+wire [7:0]  s2_pixel_from_buffer;
+wire [8:0]  s2_diff;
+wire [7:0]  s2_abs_diff;
+
+// Stage 2 reads from the buffer that Stage 1 is NOT writing to
+assign s2_pixel_from_buffer = write_to_A ? tile_buffer_B[pixel_count] : tile_buffer_A[pixel_count];
+assign s2_diff              = s2_pixel_from_buffer - s2_tile_average;
+assign s2_abs_diff          = (s2_diff[8] == 1'b1) ? -s2_diff : s2_diff; // Absolute value
+
+//--- Pipelined Logic ---//
 always @(posedge iClk) begin
     if (!iRst) begin
         // Reset all registers
-        state           <= STATE_IDLE;
-        pixel_count     <= 0;
-        pixel_sum       <= 0;
-        sad_accumulator <= 0;
-        tile_average    <= 0;
-        oRouteToCnn     <= 1'b0;
-        oDecisionValid  <= 1'b0;
+        pixel_count        <= 0;
+        write_to_A         <= 1'b1;
+        s1_pixel_sum       <= 0;
+        s2_pixel_sum_reg   <= 0;
+        s2_tile_average    <= 0;
+        s2_sad_accumulator <= 0;
+        oRouteToCnn        <= 1'b0;
+        oDecisionValid     <= 1'b0;
     end else begin
-        // Default outputs
+        // Default output
         oDecisionValid <= 1'b0;
 
-        case (state)
-            STATE_IDLE: begin
-                if (iValid) begin
-                    // New tile starts, begin Stage 1
-                    state           <= STATE_SUM;
-                    pixel_count     <= 1; // Start counting from 1 for the first pixel
-                    pixel_sum       <= iData;
-                    tile_buffer[0]  <= iData;
-                end
+        if (iValid) begin
+            // ========================================================== //
+            // == STAGE 1: Sum incoming pixels and write to active buffer == //
+            // ========================================================== //
+            if (write_to_A) begin
+                tile_buffer_A[pixel_count] <= iData;
+            end else begin
+                tile_buffer_B[pixel_count] <= iData;
             end
+            s1_pixel_sum <= s1_pixel_sum + iData;
 
-            STATE_SUM: begin // Stage 1: Buffering and Summing
-                if (pixel_count == (TILE_WIDTH * TILE_WIDTH - 1)) begin
-                    // Last pixel of the tile received
-                    state           <= STATE_CALC_SAD;
-                    pixel_sum       <= pixel_sum + iData;
-                    tile_buffer[pixel_count] <= iData;
-                    tile_average    <= (pixel_sum + iData) >> 8; // Calculate average (divide by 256)
-                    pixel_count     <= 0; // Reset for Stage 2
-                    sad_accumulator <= 0; // Reset for Stage 2
-                end else begin
-                    // Continue summing and buffering
-                    pixel_count     <= pixel_count + 1;
-                    pixel_sum       <= pixel_sum + iData;
-                    tile_buffer[pixel_count] <= iData;
-                end
-            end
 
-            STATE_CALC_SAD: begin // Stage 2: Calculating SAD
-                sad_accumulator <= sad_accumulator + abs_diff;
+            // ============================================================ //
+            // == STAGE 2: Read from inactive buffer and calculate SAD == //
+            // ============================================================ //
+            s2_sad_accumulator <= s2_sad_accumulator + s2_abs_diff;
 
-                if (pixel_count == (TILE_WIDTH * TILE_WIDTH - 1)) begin
-                    // Finished calculating SAD for all pixels
-                    state <= STATE_DECIDE;
-                end else begin
-                    pixel_count <= pixel_count + 1;
-                end
-            end
 
-            STATE_DECIDE: begin // Make the final decision
-                if (sad_accumulator > ROUTING_THRESHOLD_SAD) begin
-                    oRouteToCnn <= 1'b1; // Complex tile -> route to CNN
-                end else begin
-                    oRouteToCnn <= 1'b0; // Simple tile -> route to SNN
-                end
+            // ============================================================ //
+            // ==           Control Logic & Pipeline Management          == //
+            // ============================================================ //
+            if (pixel_count == (TILE_WIDTH * TILE_WIDTH - 1)) begin
+                // A full tile has been processed in both stages
                 
-                oDecisionValid <= 1'b1; // Decision is valid for one cycle
-                state          <= STATE_IDLE; // Go back to IDLE to wait for the next tile
+                // 1. Final decision for the tile that just finished Stage 2
+                if (s2_sad_accumulator > ROUTING_THRESHOLD_SAD) begin
+                    oRouteToCnn <= 1'b1;
+                end else begin
+                    oRouteToCnn <= 1'b0;
+                end
+                oDecisionValid <= 1'b1;
+
+                // 2. Pass Stage 1 result to Stage 2 for the NEXT tile
+                s2_pixel_sum_reg <= s1_pixel_sum;
+                s2_tile_average  <= s1_pixel_sum >> 8; // Avg for the tile that just finished Stage 1
+
+                // 3. Reset accumulators for the NEXT tile
+                s1_pixel_sum       <= 0;
+                s2_sad_accumulator <= 0;
+                
+                // 4. Swap buffers for the NEXT tile
+                write_to_A <= !write_to_A;
+                
+                // 5. Reset the shared counter
+                pixel_count <= 0;
+            end else begin
+                // Continue processing the current tile
+                pixel_count <= pixel_count + 1;
             end
-        endcase
+        end
     end
 end
 
