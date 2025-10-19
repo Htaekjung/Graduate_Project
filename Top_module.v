@@ -52,7 +52,7 @@ module Top_module (
 
     WorkloadAllocator_SAD #(
         .TILE_WIDTH(16),
-        .ROUTING_THRESHOLD_SAD(270)
+        .ROUTING_THRESHOLD_SAD(6000)
     ) workload_allocator_sad (
         .iClk(iClk),
         .iRst(iRst),

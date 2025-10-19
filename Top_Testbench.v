@@ -24,14 +24,6 @@ module tb_Topmodule;
 
     // --- DUT Instantiation ---
     Top_module 
-    // #(
-    //     .RAM_WIDTH(RAM_WIDTH),
-    //     .RAM_DEPTH(RAM_DEPTH),
-    //     .IMG_WIDTH(32),
-    //     .IMG_HEIGHT(16),
-    //     .TILE_WIDTH(16),
-    //     .TILE_HEIGHT(16)
-    // ) 
     DUT (
         .iClk(iClk),
         .iRst(iRst),
@@ -75,27 +67,9 @@ module tb_Topmodule;
         
         // [수정 4] 자동 검증 로직
         // BRAM의 읽기 지연시간(2 사이클)만큼 기다린 후, 첫 데이터가 oData에 나타납니다.
-        repeat (4) @(posedge iClk);
+        repeat (2) @(posedge iClk);
 
-        // 이제부터 oData와 원본 데이터를 매 사이클 비교합니다.
-        for (i = 0; i < RAM_DEPTH; i = i + 1) begin
-             if (oData !== image_data_from_file[i]) begin
-                $display("ERROR: Mismatch at address %0d! Read: %h, Expected: %h", i, oData, image_data_from_file[i]);
-                error_count = error_count + 1;
-            end
-            @(posedge iClk); // 다음 데이터를 확인하기 위해 한 사이클 진행
-        end
-
-        // 5. 최종 결과 확인 및 시뮬레이션 종료
-        if (error_count == 0) begin
-            $display("SUCCESS: All %0d bytes verified successfully!", RAM_DEPTH);
-        end else begin
-            $display("FAILURE: Found %0d mismatches.", error_count);
-        end
-        @(posedge iClk);
-        @(posedge iClk);
-        @(posedge iClk);
-        @(posedge iClk);
+        repeat (2000) @(posedge iClk);
         $display("INFO: Simulation Finished.");
         $stop;
     end

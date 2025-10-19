@@ -19,99 +19,88 @@ module WorkloadAllocator_SAD #(
 );
 
 //--- Registers & Wires ---//
-
-// Double Buffers for pipelining
 reg [7:0]   tile_buffer_A [0:(TILE_WIDTH*TILE_WIDTH)-1];
 reg [7:0]   tile_buffer_B [0:(TILE_WIDTH*TILE_WIDTH)-1];
+reg [8:0]   pixel_count;
+reg         write_to_A;
 
-// A single counter for driving both pipeline stages
-reg [8:0]   pixel_count; // Counts from 0-255 and wraps around
-
-// Buffer management
-reg         write_to_A; // 1: Stage 1 writes to Buffer A, Stage 2 reads from B
-                        // 0: Stage 1 writes to Buffer B, Stage 2 reads from A
-
-// --- Stage 1: Summation Pipeline Registers --- //
 reg [15:0]  s1_pixel_sum;
-
-// --- Stage 2: SAD Calculation Pipeline Registers --- //
-reg [15:0]  s2_pixel_sum_reg;
 reg [7:0]   s2_tile_average;
 reg [15:0]  s2_sad_accumulator;
 
-// Wires for Stage 2 SAD calculation
 wire [7:0]  s2_pixel_from_buffer;
 wire [8:0]  s2_diff;
 wire [7:0]  s2_abs_diff;
+wire        tile_is_done = (iValid && (pixel_count == (TILE_WIDTH * TILE_WIDTH - 1)));
 
-// Stage 2 reads from the buffer that Stage 1 is NOT writing to
 assign s2_pixel_from_buffer = write_to_A ? tile_buffer_B[pixel_count] : tile_buffer_A[pixel_count];
 assign s2_diff              = s2_pixel_from_buffer - s2_tile_average;
-assign s2_abs_diff          = (s2_diff[8] == 1'b1) ? -s2_diff : s2_diff; // Absolute value
-
+assign s2_abs_diff          = (s2_diff[8] == 1'b1) ? -s2_diff : s2_diff;
 //--- Pipelined Logic ---//
 always @(posedge iClk) begin
     if (!iRst) begin
-        // Reset all registers
         pixel_count        <= 0;
         write_to_A         <= 1'b1;
         s1_pixel_sum       <= 0;
-        s2_pixel_sum_reg   <= 0;
         s2_tile_average    <= 0;
         s2_sad_accumulator <= 0;
         oRouteToCnn        <= 1'b0;
         oDecisionValid     <= 1'b0;
     end else begin
-        // Default output
         oDecisionValid <= 1'b0;
 
         if (iValid) begin
             // ========================================================== //
-            // == STAGE 1: Sum incoming pixels and write to active buffer == //
+            // == STAGE 1: Sum & Write to Buffer                     == //
             // ========================================================== //
             if (write_to_A) begin
                 tile_buffer_A[pixel_count] <= iData;
             end else begin
                 tile_buffer_B[pixel_count] <= iData;
             end
-            s1_pixel_sum <= s1_pixel_sum + iData;
-
+            
+            // ⭐ 핵심 수정: 타일이 끝나면 0으로 초기화, 아니면 계속 더함
+            if (tile_is_done) begin
+                s1_pixel_sum <= 0; // 다음 타일을 위해 완벽하게 초기화
+            end else begin
+                s1_pixel_sum <= s1_pixel_sum + iData;
+            end
 
             // ============================================================ //
-            // == STAGE 2: Read from inactive buffer and calculate SAD == //
+            // == STAGE 2: Read & Calculate SAD                      == //
             // ============================================================ //
-            s2_sad_accumulator <= s2_sad_accumulator + s2_abs_diff;
+            // 타일이 끝나면 다음 SAD 계산을 위해 0으로 초기화, 아니면 계속 더함
+            if (tile_is_done) begin
+                s2_sad_accumulator <= 0;
+            end else begin
+                s2_sad_accumulator <= s2_sad_accumulator + s2_abs_diff;
+            end
 
-
             // ============================================================ //
-            // ==           Control Logic & Pipeline Management          == //
+            // ==           Control Logic & Pipeline Management        == //
             // ============================================================ //
-            if (pixel_count == (TILE_WIDTH * TILE_WIDTH - 1)) begin
-                // A full tile has been processed in both stages
-                
-                // 1. Final decision for the tile that just finished Stage 2
-                if (s2_sad_accumulator > ROUTING_THRESHOLD_SAD) begin
+            if (tile_is_done) begin
+                // 1. 최종 결정 (방금 2단계가 끝난 타일에 대한 결과)
+                // s2_sad_accumulator의 최종 값은 현재 값 + 마지막 abs_diff 값임
+                if ((s2_sad_accumulator + s2_abs_diff) > ROUTING_THRESHOLD_SAD) begin
                     oRouteToCnn <= 1'b1;
                 end else begin
                     oRouteToCnn <= 1'b0;
                 end
                 oDecisionValid <= 1'b1;
 
-                // 2. Pass Stage 1 result to Stage 2 for the NEXT tile
-                s2_pixel_sum_reg <= s1_pixel_sum;
-                s2_tile_average  <= s1_pixel_sum >> 8; // Avg for the tile that just finished Stage 1
-
-                // 3. Reset accumulators for the NEXT tile
-                s1_pixel_sum       <= 0;
-                s2_sad_accumulator <= 0;
+                // 2. 1단계의 "최종 합계"를 정확히 계산하여 2단계로 전달
+                // 현재 s1_pixel_sum은 마지막 픽셀을 더하기 전의 값임
+                s2_tile_average <= (s1_pixel_sum + iData) >> 8;
                 
-                // 4. Swap buffers for the NEXT tile
+                // 3. 버퍼 스왑
                 write_to_A <= !write_to_A;
-                
-                // 5. Reset the shared counter
+            end
+            
+            // 카운터 업데이트
+            if (tile_is_done) begin
                 pixel_count <= 0;
             end else begin
-                // Continue processing the current tile
                 pixel_count <= pixel_count + 1;
             end
         end
