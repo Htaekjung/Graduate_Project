@@ -1,4 +1,66 @@
 module Bram #(
+    parameter RAM_WIDTH = 8,                   // Specify RAM data width
+    parameter RAM_DEPTH = 256,                 // Specify RAM depth (number of entries)
+    parameter INIT_FILE = ""                   // Specify name/location of RAM initialization file
+) (
+    // Port A Interface
+    input  wire                             clka,
+    input  wire                             ena,
+    input  wire                             wea,
+    input  wire [18:0]     addra,
+    input  wire [RAM_WIDTH-1:0]             dina,
+    output reg  [RAM_WIDTH-1:0]             douta,
+
+    // Port B Interface
+    input  wire                             clkb,
+    input  wire                             enb,
+    input  wire                             web,
+    input  wire [18:0]     addrb,
+    input  wire [RAM_WIDTH-1:0]             dinb,
+    output reg  [RAM_WIDTH-1:0]             doutb
+);
+
+  // Shared RAM Core
+  reg [RAM_WIDTH-1:0] ram[RAM_DEPTH-1:0];
+
+  // Memory Initialization
+  generate
+    if (INIT_FILE != "") begin: use_init_file
+      initial begin
+        $readmemh(INIT_FILE, ram);
+      end
+    end else begin: init_bram_to_zero
+      integer i;
+      initial begin
+        for (i = 0; i < RAM_DEPTH; i = i + 1) begin
+          ram[i] = {RAM_WIDTH{1'b0}};
+        end
+      end
+    end
+  endgenerate
+
+  // Port A Logic (Read-First)
+  always @(posedge clka) begin
+    if (ena) begin
+      if (wea) begin
+        ram[addra] <= dina;
+      end
+      douta <= ram[addra];
+    end
+  end
+
+  // Port B Logic (Read-First)
+  always @(posedge clkb) begin
+    if (enb) begin
+      if (web) begin
+        ram[addrb] <= dinb;
+      end
+      doutb <= ram[addrb];
+    end
+  end
+
+endmodule
+module Bram_Tiling #(
   parameter RAM_WIDTH = 8,                       // Specify RAM data width
   parameter RAM_DEPTH = 307200,                     // Specify RAM depth (number of entries)
   parameter RAM_PERFORMANCE = "HIGH_PERFORMANCE", // Select "HIGH_PERFORMANCE" or "LOW_LATENCY" 

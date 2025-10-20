@@ -1,5 +1,5 @@
 
-module Bram_interface#(
+module Bram_interface_Tiling#(
     parameter RAM_WIDTH = 8,                       
     parameter RAM_DEPTH = 512,                     
     parameter RAM_PERFORMANCE = "HIGH_PERFORMANCE", 
@@ -12,7 +12,7 @@ module Bram_interface#(
     input iClk,
     input iRst,
     input [7:0] iData,
-    output reg [10:0] oDone_sig,
+    output reg oDone_sig,
     output [7:0] oData,
     output reg enb
 );
@@ -95,7 +95,7 @@ always @(posedge iClk) begin
         tile_col_cnt <= 0;
         tile_x_cnt   <= 0;
         tile_y_cnt   <= 0;
-        oDone_sig    <= 11'd0; 
+        oDone_sig    <= 1'd0; 
     end else if (state == WRITE) begin
         // 쓰기 상태 로직
         ena   <= 1'b1;
@@ -108,6 +108,7 @@ always @(posedge iClk) begin
         tile_x_cnt   <= 0;
         tile_y_cnt   <= 0;
     end else if (state == READ) begin
+        oDone_sig <= 1;
         addrb <= ((tile_y_cnt * TILE_HEIGHT) + tile_row_cnt) * IMG_WIDTH + 
                  ((tile_x_cnt * TILE_WIDTH) + tile_col_cnt);
 
@@ -116,8 +117,8 @@ always @(posedge iClk) begin
             if (tile_row_cnt == TILE_HEIGHT - 1) begin
                 tile_row_cnt <= 0; // 행 카운터 리셋 (타일 하나 완료)
                 
-                oDone_sig <= oDone_sig + 1;
-                
+                // oDone_sig <= oDone_sig + 1;
+
                 if (tile_x_cnt == NUM_TILES_X - 1) begin
                     tile_x_cnt <= 0;
                     if (tile_y_cnt == NUM_TILES_Y - 1) begin
@@ -136,13 +137,13 @@ always @(posedge iClk) begin
         end
     end else if (state == DONE) begin
         // DONE 상태 진입 시 oDone_sig를 리셋할 필요가 있다면 여기에 추가
-        oDone_sig <= 11'd0;
+        //oDone_sig <= 11'd0;
     end else begin
         // 기타 상태
     end
 end
 
-    Bram #(
+    Bram_Tiling #(
     .RAM_WIDTH(RAM_WIDTH),
     .RAM_DEPTH(RAM_DEPTH),
     .RAM_PERFORMANCE(RAM_PERFORMANCE),

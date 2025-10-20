@@ -88,7 +88,7 @@ always @(posedge iClk) begin
                     oRouteToCnn <= 1'b0;
                 end
                 oDecisionValid <= 1'b1;
-
+    
                 // 2. 1단계의 "최종 합계"를 정확히 계산하여 2단계로 전달
                 // 현재 s1_pixel_sum은 마지막 픽셀을 더하기 전의 값임
                 s2_tile_average <= (s1_pixel_sum + iData) >> 8;
