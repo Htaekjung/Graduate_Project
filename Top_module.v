@@ -62,6 +62,15 @@ module Top_module (
         .oDecisionValid(oDecisionValid)
     );
 
+
+
+
+
+
+
+
+
+
     // 예시로, 최종 출력 데이터를 BRAM의 출력으로 전달
     assign oData = wData;
 
