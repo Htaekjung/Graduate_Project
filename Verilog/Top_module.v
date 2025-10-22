@@ -3,7 +3,9 @@
 module Top_module (
     input  wire        iClk,
     input  wire        iRst,
-    input  wire [7:0]  iData,
+    // input  wire [7:0]  iData,
+    input rd_uart,
+	input rx,
     output wire [7:0]  oData
 );
     // =========================================================
@@ -27,39 +29,35 @@ module Top_module (
     reg        r_Valid;         // WorkloadAllocator 입력 유효 신호
     wire [7:0] oSNN_Result, oCNN_Result;
     wire oSNN_Valid, oCNN_Valid;
-
-	// uart #(.DBIT(8),.SB_TICK(16),.DVSR(100),.DVSR_WIDTH(7),.FIFO_W(5)) m3 //Baud rate of 100_000(115_200 produce errors). Computation: DVSR=clk_freq/(16*BaudRate)
-	// (
-	// 	.clk(clk_sdram),
-	// 	.rst_n(rst_n),
-	// 	.rd_uart(),
-	// 	.wr_uart(),
-	// 	.wr_data(),
-	// 	.rx(rx),
-	// 	.tx(),
-	// 	.rd_data(dout),
-	// 	.rx_done(rx_done),
-	// 	.tx_full()
-    // );
-
-
+    wire rx_done;
+    wire [7:0] rd_data;
+	 uart #(.DBIT(8),.SB_TICK(16),.DVSR(326),.DVSR_WIDTH(9),.FIFO_W(2)) m0
+	(
+		.clk(iClk),
+		.rst_n(iRst),
+		.rd_uart(rd_uart),
+		.rx(rx),
+		.rd_data(rd_data),
+		.rx_done(rx_done)
+    );
 
     // =========================================================
     // BRAM Interface 인스턴스
     // =========================================================
     Bram_interface_Tiling #(
         .RAM_WIDTH(8),
-        .RAM_DEPTH(307200),
+        .RAM_DEPTH(256),
         .RAM_PERFORMANCE("HIGH_PERFORMANCE"),
         .INIT_FILE(""),   // 초기화 파일이 있다면 여기에 입력
-        .IMG_WIDTH(640),
-        .IMG_HEIGHT(480),
+        .IMG_WIDTH(16),
+        .IMG_HEIGHT(16),
         .TILE_WIDTH(16),
         .TILE_HEIGHT(16)
     ) bram (
         .iClk      (iClk),
         .iRst      (iRst),
-        .iData     (iData),
+        .iData     (rd_data),
+        .iValid    (rx_done),
         .enb       (wValid),
         .oDone_sig (done_sig),
         .oData     (wData_T2WF)

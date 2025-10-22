@@ -12,6 +12,7 @@ module Bram_interface_Tiling#(
     input iClk,
     input iRst,
     input [7:0] iData,
+    input iValid,
     output reg oDone_sig,
     output [7:0] oData,
     output reg enb
@@ -97,9 +98,12 @@ always @(posedge iClk) begin
         tile_y_cnt   <= 0;
         oDone_sig    <= 1'd0; 
     end else if (state == WRITE) begin
-        // 쓰기 상태 로직
-        ena   <= 1'b1;
-        addra <= addra + 1;
+        if (iValid) begin // iValid 신호가 1일 때만 동작!
+            ena   <= 1'b1;
+            addra <= addra + 1;
+        end else begin
+            ena   <= 1'b0; // 유효한 데이터가 없으면 쓰기 비활성화
+        end
     end else if (state == DELAY) begin
         // DELAY: READ 시작 전 카운터 초기화
         ena          <= 1'b0;

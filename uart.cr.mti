@@ -1,22 +1,73 @@
-C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/baud_generator.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/baud_generator.v
+C:/Users/SAMSUNG/Documents/Graduate_Project/Verilog/Bram_interface_Tiling.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/Graduate_Project/Verilog/Bram_interface_Tiling.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module baud_generator
+-- Compiling module Bram_interface_Tiling
 
 Top level modules:
-	baud_generator
+	Bram_interface_Tiling
 
-} {} {}} C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart_rx.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart_rx.v
+} {} {}} C:/Users/SAMSUNG/Documents/Graduate_Project/uart.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/Graduate_Project/uart.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module uart
+
+Top level modules:
+	uart
+
+} {} {}} C:/Users/SAMSUNG/Documents/Graduate_Project/Verilog/Bram_interface_FIFO.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/Graduate_Project/Verilog/Bram_interface_FIFO.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module Bram_interface_FIFO
+
+Top level modules:
+	Bram_interface_FIFO
+
+} {} {}} C:/Users/SAMSUNG/Documents/Graduate_Project/Verilog/Top_Testbench.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/Graduate_Project/Verilog/Top_Testbench.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module tb_Top_module
+
+Top level modules:
+	tb_Top_module
+
+} {} {}} C:/Users/SAMSUNG/Documents/Graduate_Project/uart_rx.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/Graduate_Project/uart_rx.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module uart_rx
 
 Top level modules:
 	uart_rx
 
-} {} {}} C:/Users/SAMSUNG/Documents/Graduate_Project/tb_UART_new.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/Graduate_Project/tb_UART_new.v
+} {} {}} C:/Users/SAMSUNG/Documents/Graduate_Project/Verilog/BRAM.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/Graduate_Project/Verilog/BRAM.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module tb_uart_10bytes
+-- Compiling module Bram
+-- Compiling module Bram_Tiling
 
 Top level modules:
-	tb_uart_10bytes
+	Bram
+	Bram_Tiling
+
+} {} {}} C:/Users/SAMSUNG/Documents/Graduate_Project/baud_generator.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/Graduate_Project/baud_generator.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module baud_generator
+
+Top level modules:
+	baud_generator
+
+} {} {}} C:/Users/SAMSUNG/Documents/Graduate_Project/Verilog/Workload_Allocator.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/Graduate_Project/Verilog/Workload_Allocator.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module WorkloadAllocator_SAD
+
+Top level modules:
+	WorkloadAllocator_SAD
+
+} {} {}} C:/Users/SAMSUNG/Documents/Graduate_Project/Verilog/SNN_Core.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/Graduate_Project/Verilog/SNN_Core.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module SNN_Core
+
+Top level modules:
+	SNN_Core
+
+} {} {}} C:/Users/SAMSUNG/Documents/Graduate_Project/Verilog/CNN_Core.v {1 {vlog -work work -stats=none C:/Users/SAMSUNG/Documents/Graduate_Project/Verilog/CNN_Core.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module CNN_Core
+
+Top level modules:
+	CNN_Core
 
 } {} {}}
