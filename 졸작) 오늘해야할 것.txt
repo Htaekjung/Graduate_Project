@@ -1,0 +1,31 @@
+1. 파이썬에서 연상의 프레임을 보낼 수 있도록 수정
+
+
+최종 목표 : FPGA로 구현한 CNN/SNN 하이브리드 아키텍처의 실시간 처리 Sobel Edge detection
+
+간단 Flow : 현재 FPGA에 디스플레이가 연결되어있는데 이를 이용하여 UART로 이미지를 불러오면 FPGA에서 연산을 통해 Edge detection을 수행을 하고 디스플레이에 출력을 하도록 설계 + CNN / SNN 각각 사용할 때에 비해 얼마나 효율적인지 분석
+
+
+Flow
+0. PC에서 영상을 프레임단위로 쪼개서 grayscale 처리를 matlab을 통해 수행해서 데이터 값을 txt파일로 저장한 다음에 python 코드를 bash에서 열어서 FPGA로 전송하는 코드를 통해 데이터를 FPGA로 넣을거야 
+1. FPGA uart로 txt 파일을 받음
+2. T0 프레임을 dual port bram_1에 저장함
+3. T1 프레임을 dual port bram2에 덮어쓰는 동시에 T1 프레임을 출력하고 dual port bram_1에서 T0 프레임을 출력해서 T0, T1 프레임 데이터끼리 SAD연산 수행
+4. Workload allocator를 통해 SAD 연산 값이 threshold를 넘으면 CNN, 안넘으면 SNN 연산 수행
+5. 값 txt파일로 출력
+
+
+Step1. BRAM에 전체 이미지 들어올 때 가정해서 짜보기
+Step 1-1. 전체 이미지 들어오면 타일링 후 workload allocator에서 엣지밀도 연산 후 threshold를 넘으면 CNN, 안넘으면 SNN 연산 수행 후 값 txt파일로 출력
+Step 1-2. 
+Bram 만들기(O),
+이미지 데이터 넣는 거 확인(O),
+데이터 출력 확인(O),
+이미지 데이터 넣는 거 interface 구현 확인(O),
+데이터 출력 interface 구현 확인(O),
+workload allocator 연산 확인(O)
+python으로 이미지의 threshold 임계값 찾기
+CNN, SNN core 연산 동작 잘 되는지 확인, 
+값 출력 확인
+
+

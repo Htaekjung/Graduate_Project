@@ -1,0 +1,37 @@
+CNN -> MAC -> DSP
+하지만, LUT utilization은 낮다. 
+
+low bit 덧셈 -> LUT 많이 쓰임
+근데 SNN의 문제는 
+
+DNN to SNN conversion을 하는데 long time sequence 필요
+DNN의 웨이트는 낮은 precision으로 돌 수 있잖아. 그렇지? 그러면 이제 오히려 우리가 conversion 할 때 activation 값을 conversion을 해서 스파이크 패턴으로 바꿔서 누적하는 게 아니라 반대로 어차피 weight랑 activation을 곱하는 거니까 써도 상관없잖아. 웨이트를 스파이크 패턴으로 바꾸고 누적을 한다. 그러면 이 스파이크 패턴의 길이가 줄어들 것이다.
+KWS는 RNN의 한 종류인 GRU를 사용하는데 이것들을 conversion할 수 있는 방식이 있어야됨
+
+KWS에서는 SNN portion이 더 커서 코어 비율이 SNN이 더 크게 하면 됨
+
+SNN이 이만큼 필요하고 DNN 이만큼 필요하니까 리소스 많이 쓸 수 있어서 실제로 아키텍처 잘 넣어가지고 해봤고 리소스 잘 쓰는 거 확인했고 그리고 일부 연산을 CNN 코어를 일부 연산 SNN으로 쓸 수 있게끔 개조해서 잘했다
+-------------------------------------------------------------------------------------------------------------------------
+최종 목표 : FPGA로 구현한 CNN/SNN 하이브리드 아키텍처의 실시간 처리 Sobel Edge detection
+
+Flow : 현재 FPGA에 카메라랑 디스플레이랑 연결되어있는데 이를 이용하여 카메라로 이미지를 실시간으로 불러오면 FPGA에서 연산을 통해 Edge detection을 수행을 하고 디스플레이에 출력을 하도록 설계 + CNN / SNN 각각 사용할 때에 비해 얼마나 효율적인지 분석
+
+구체적 flow : 
+1. 카메라를 통해 FPGA로 들어오는 이미지를 타일링을 하고 threshold를 설정후 dense, sparse한 데이터로 SAD연산을 통해 분배, Threshold보다 높으면 cnn, 낮으면 snn으로 배치
+2. 연산을 수행 - CNN - DSP를 사용한 MAC 연산, SNN - LUT를 사용한 addition 수행
+3. 디스플레이로 데이터 보내서 디스플레이 출력
+
+1. 카메라로 이미지를 입력해서 t=T일 때의 이미지를 메모리에 넣어두고 t=T+1일 때의 이미지와의 SAD를 연산
+2. Threshold보다 작으면 SNN, 크면 CNN연산 수행
+	2-1) SNN - 덧셈기, CNN - DSP 사용
+3. 메모리 저장 후 디스플레이 출력
+
+dsp랑 lut를 통해 연산을 할 때 각 core를 몇개의 PE로 할당할지 생각해봐야함
+메모리 용량도 생각해야함
+
+512 MB DDR3
+256 Mb Quad-SPI Flash
+DSP 220개
+LUT 53200개
+FF 106400개
+Block ram 4.9Mb
