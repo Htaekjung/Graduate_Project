@@ -24,8 +24,11 @@ Bram 만들기(O),
 이미지 데이터 넣는 거 interface 구현 확인(O),
 데이터 출력 interface 구현 확인(O),
 workload allocator 연산 확인(O)
-python으로 이미지의 threshold 임계값 찾기
-CNN, SNN core 연산 동작 잘 되는지 확인, 
-값 출력 확인
+CNN, SNN core 연산 동작 잘 되는지 확인(O)
+값 출력 확인(O)
 
+Step 2.
+python으로 이미지의 threshold 임계값 찾기
+UART 통신
+VGA 포트 연결
 
