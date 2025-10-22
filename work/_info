@@ -8,40 +8,82 @@ z2
 !i10f 100
 cModel Technology
 dC:/Users/SAMSUNG/Desktop/University/Graduate School - EASY LAB/2. Graduate_Project/My_Project/My_Project
-vBram
-Z0 !s110 1760935650
+vbaud_generator
+!s110 1761111087
 !i10b 1
-!s100 YfjfY7[4ZR2^d1OBkR=Ta1
-IzF3kkBGG_C4A4UFaJ7W=e1
-Z1 VDg1SIo80bB@j0V0VzS_@n1
-Z2 dC:/Users/htaek/Documents/Graduate_Project
-Z3 w1760935642
-Z4 8C:/Users/htaek/Documents/Graduate_Project/BRAM.v
-Z5 FC:/Users/htaek/Documents/Graduate_Project/BRAM.v
-L0 1
-Z6 OV;L;10.5b;63
+!s100 R1US0f>ACnd4=gS3Zk92F1
+Ih4iOPL9T_:IodZEGl^B>L3
+Z0 VDg1SIo80bB@j0V0VzS_@n1
+Z1 dC:/Users/SAMSUNG/Documents/Graduate_Project
+Z2 w1760431174
+8C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/baud_generator.v
+FC:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/baud_generator.v
+L0 3
+Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z7 !s108 1760935650.000000
-Z8 !s107 C:/Users/htaek/Documents/Graduate_Project/BRAM.v|
-Z9 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/htaek/Documents/Graduate_Project/BRAM.v|
+!s108 1761111087.000000
+!s107 C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/baud_generator.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/baud_generator.v|
 !i113 1
-Z10 o-work work
-Z11 tCvgOpt 0
+Z4 o-work work
+Z5 tCvgOpt 0
+vbaudrate_gen
+Z6 !s110 1761109980
+!i10b 1
+!s100 2VzCM7nbCM;7DT5zgILS53
+InG5oX?AcH3NlgDj<`alk;2
+R0
+R1
+Z7 w1761098265
+Z8 8C:/Users/SAMSUNG/Documents/Graduate_Project/uart_clock_module.v
+Z9 FC:/Users/SAMSUNG/Documents/Graduate_Project/uart_clock_module.v
+L0 16
+R3
+r1
+!s85 0
+31
+Z10 !s108 1761109980.000000
+Z11 !s107 C:/Users/SAMSUNG/Documents/Graduate_Project/uart_clock_module.v|
+Z12 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/Graduate_Project/uart_clock_module.v|
+!i113 1
+R4
+R5
+vBram
+Z13 !s110 1760935650
+!i10b 1
+!s100 YfjfY7[4ZR2^d1OBkR=Ta1
+IzF3kkBGG_C4A4UFaJ7W=e1
+R0
+Z14 dC:/Users/htaek/Documents/Graduate_Project
+Z15 w1760935642
+Z16 8C:/Users/htaek/Documents/Graduate_Project/BRAM.v
+Z17 FC:/Users/htaek/Documents/Graduate_Project/BRAM.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z18 !s108 1760935650.000000
+Z19 !s107 C:/Users/htaek/Documents/Graduate_Project/BRAM.v|
+Z20 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/htaek/Documents/Graduate_Project/BRAM.v|
+!i113 1
+R4
+R5
 n@bram
 vBram_interface
 !s110 1760857464
 !i10b 1
 !s100 808E2CAnT@H6ED?jS:WdI1
 IV:biBBGTV;2QR?NSk5?X<0
+R0
 R1
-Z12 dC:/Users/SAMSUNG/Documents/Graduate_Project
 w1760767434
 8C:/Users/SAMSUNG/Documents/Graduate_Project/Bram_interface.v
 FC:/Users/SAMSUNG/Documents/Graduate_Project/Bram_interface.v
 L0 2
-R6
+R3
 r1
 !s85 0
 31
@@ -49,43 +91,43 @@ r1
 !s107 C:/Users/SAMSUNG/Documents/Graduate_Project/Bram_interface.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/Graduate_Project/Bram_interface.v|
 !i113 1
-R10
-R11
+R4
+R5
 n@bram_interface
 vBram_interface_FIFO
-R0
+R13
 !i10b 1
 !s100 L:DcGoebKYzGN`jUXOi]T1
 Ic6Sb`JI]jL]2GS:M;U]KT2
-R1
-R2
+R0
+R14
 w1760935646
 8C:/Users/htaek/Documents/Graduate_Project/Bram_interface_FIFO.v
 FC:/Users/htaek/Documents/Graduate_Project/Bram_interface_FIFO.v
 L0 1
-R6
+R3
 r1
 !s85 0
 31
-R7
+R18
 !s107 C:/Users/htaek/Documents/Graduate_Project/Bram_interface_FIFO.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/htaek/Documents/Graduate_Project/Bram_interface_FIFO.v|
 !i113 1
-R10
-R11
+R4
+R5
 n@bram_interface_@f@i@f@o
 vBram_interface_Tiling
 !s110 1760933006
 !i10b 1
 !s100 KQKEEnV=B0<Gb`NPFziG92
 I5R1Ph3Dz[IK[X@WA3FbDV2
-R1
-R2
+R0
+R14
 w1760933000
 8C:/Users/htaek/Documents/Graduate_Project/Bram_interface_Tiling.v
 FC:/Users/htaek/Documents/Graduate_Project/Bram_interface_Tiling.v
 L0 2
-R6
+R3
 r1
 !s85 0
 31
@@ -93,43 +135,85 @@ r1
 !s107 C:/Users/htaek/Documents/Graduate_Project/Bram_interface_Tiling.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/htaek/Documents/Graduate_Project/Bram_interface_Tiling.v|
 !i113 1
-R10
-R11
+R4
+R5
 n@bram_interface_@tiling
 vBram_Tiling
-R0
+R13
 !i10b 1
 !s100 zOV<M_9ANihQ:OiK0fcb03
 I5E_?4^3G03bCI6SPWDo4I2
-R1
-R2
-R3
-R4
-R5
+R0
+R14
+R15
+R16
+R17
 L0 63
-R6
+R3
 r1
 !s85 0
 31
+R18
+R19
+R20
+!i113 1
+R4
+R5
+n@bram_@tiling
+vclock_module
+R6
+!i10b 1
+!s100 M3WeH4]9EGB74GehWY?2U3
+IWWJ?GYn<n0aS2DP7MSR803
+R0
+R1
 R7
 R8
 R9
-!i113 1
+L0 3
+R3
+r1
+!s85 0
+31
 R10
 R11
-n@bram_@tiling
+R12
+!i113 1
+R4
+R5
+vfifo
+!s110 1761111009
+!i10b 1
+!s100 E:Gj9^`8PR84LSzcNIOe:0
+In4cj3An9FJZb_<omLBL5S3
+R0
+R1
+R2
+8C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/fifo.v
+FC:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/fifo.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1761111009.000000
+!s107 C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/fifo.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/fifo.v|
+!i113 1
+R4
+R5
 vtb_Topmodule
 !s110 1760928280
 !i10b 1
 !s100 JSVPLV8DgkmS[LGUnR:U^0
 IknBC2oacSbPcnURg9QOhA3
-R1
-R2
+R0
+R14
 w1760796548
 8C:/Users/htaek/Documents/Graduate_Project/Top_Testbench.v
 FC:/Users/htaek/Documents/Graduate_Project/Top_Testbench.v
 L0 3
-R6
+R3
 r1
 !s85 0
 31
@@ -137,116 +221,305 @@ r1
 !s107 C:/Users/htaek/Documents/Graduate_Project/Top_Testbench.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/htaek/Documents/Graduate_Project/Top_Testbench.v|
 !i113 1
-R10
-R11
+R4
+R5
 ntb_@topmodule
+vtb_uart_10bytes
+!s110 1761111588
+!i10b 1
+!s100 N]SQjnU>G4C46GHc4UJKn3
+IB7AILNcVA0Me<A4dh3]o43
+R0
+R1
+w1761111586
+Z21 8C:/Users/SAMSUNG/Documents/Graduate_Project/tb_UART_new.v
+Z22 FC:/Users/SAMSUNG/Documents/Graduate_Project/tb_UART_new.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1761111588.000000
+!s107 C:/Users/SAMSUNG/Documents/Graduate_Project/tb_UART_new.v|
+Z23 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/Graduate_Project/tb_UART_new.v|
+!i113 1
+R4
+R5
+vtb_uart_new
+!s110 1761110952
+!i10b 1
+!s100 EXodc56M5LeBhHo[A5Z4X0
+IkZl?:zzI`8gV533>@40ND0
+R0
+R1
+w1761110931
+R21
+R22
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1761110952.000000
+!s107 C:/Users/SAMSUNG/Documents/Graduate_Project/tb_UART_new.v|
+R23
+!i113 1
+R4
+R5
+vtb_uart_top
+R6
+!i10b 1
+!s100 ji;RKSU<]GQ6X:LhbBOH]3
+I57]R6IoLzdbJRFn6@AHVR1
+R0
+R1
+w1761109914
+Z24 8C:/Users/SAMSUNG/Documents/Graduate_Project/tb_UART.v
+Z25 FC:/Users/SAMSUNG/Documents/Graduate_Project/tb_UART.v
+L0 3
+R3
+r1
+!s85 0
+31
+R10
+Z26 !s107 C:/Users/SAMSUNG/Documents/Graduate_Project/tb_UART.v|
+Z27 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/Graduate_Project/tb_UART.v|
+!i113 1
+R4
+R5
+vtb_uart_top_parallel
+!s110 1761110567
+!i10b 1
+!s100 9TQW:Rh4Y8KG8]Q6:;GYF0
+IELPc`g:e?V5[2KQR70P9>1
+R0
+R1
+w1761110564
+R24
+R25
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1761110567.000000
+R26
+R27
+!i113 1
+R4
+R5
 vTop_module
-Z13 !s110 1760940757
+Z28 !s110 1760940757
 !i10b 1
 !s100 C3EU<O:McNPUIfi3lV:UL2
 IX;;1bdRG4zLk]VJQO[[`U0
-R1
-R2
+R0
+R14
 w1760940752
 8C:/Users/htaek/Documents/Graduate_Project/Top_module.v
 FC:/Users/htaek/Documents/Graduate_Project/Top_module.v
 L0 3
-R6
+R3
 r1
 !s85 0
 31
-Z14 !s108 1760940757.000000
+Z29 !s108 1760940757.000000
 !s107 C:/Users/htaek/Documents/Graduate_Project/Top_module.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/htaek/Documents/Graduate_Project/Top_module.v|
 !i113 1
-R10
-R11
+R4
+R5
 n@top_module
+vuart
+!s110 1761111352
+!i10b 1
+!s100 ;0V6;o?9;GJHf7L4GX<373
+IkF[M^X2JR9I9j_;ah=o4K0
+R0
+R1
+w1761111266
+8C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart.v
+FC:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1761111352.000000
+!s107 C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart.v|
+!i113 1
+R4
+R5
+vuart_rx
+Z30 !s110 1761110978
+!i10b 1
+!s100 LCi?fY`SRo`UmiMX;;jWT0
+ISX7TGDRaZ0UOOVMR>H`SB3
+R0
+R1
+R2
+8C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart_rx.v
+FC:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart_rx.v
+L0 3
+R3
+r1
+!s85 0
+31
+Z31 !s108 1761110978.000000
+!s107 C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart_rx.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart_rx.v|
+!i113 1
+R4
+R5
+vuart_top
+R6
+!i10b 1
+!s100 eU[JIT@fe>ZFl?fbOIXcI0
+ImZRSJLSlG]C=ckVI9]IPW3
+R0
+R1
+w1761097985
+Z32 8C:/Users/SAMSUNG/Documents/Graduate_Project/uart_top.v
+Z33 FC:/Users/SAMSUNG/Documents/Graduate_Project/uart_top.v
+L0 1
+R3
+r1
+!s85 0
+31
+R10
+Z34 !s107 C:/Users/SAMSUNG/Documents/Graduate_Project/uart_top.v|
+Z35 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/Graduate_Project/uart_top.v|
+!i113 1
+R4
+R5
+vuart_top_parallel
+!s110 1761110433
+!i10b 1
+!s100 UgfU;G;>VYL_CoHUMV@2Y2
+IV:dnh2P:NVgGLV;1o>fb=0
+R0
+R1
+w1761110430
+R32
+R33
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1761110433.000000
+R34
+R35
+!i113 1
+R4
+R5
+vuart_tx
+R30
+!i10b 1
+!s100 ZKJEKZicjNP;L=DN3V0fe0
+IId27:;AN?zNm`79zgJd1J1
+R0
+R1
+R2
+8C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart_tx.v
+FC:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart_tx.v
+L0 3
+R3
+r1
+!s85 0
+31
+R31
+!s107 C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart_tx.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart_tx.v|
+!i113 1
+R4
+R5
 vWorkloadAllocator
 !s110 1760768464
 !i10b 1
 !s100 QoPlZBmc1O:HckbLH?6L11
 ICE=65AIP40_K[0k:6bIoX0
+R0
 R1
-R12
 w1760768363
-Z15 8C:/Users/SAMSUNG/Documents/Graduate_Project/Workload_Allocator.v
-Z16 FC:/Users/SAMSUNG/Documents/Graduate_Project/Workload_Allocator.v
+Z36 8C:/Users/SAMSUNG/Documents/Graduate_Project/Workload_Allocator.v
+Z37 FC:/Users/SAMSUNG/Documents/Graduate_Project/Workload_Allocator.v
 L0 3
-R6
+R3
 r1
 !s85 0
 31
 !s108 1760768464.000000
-Z17 !s107 C:/Users/SAMSUNG/Documents/Graduate_Project/Workload_Allocator.v|
-Z18 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/Graduate_Project/Workload_Allocator.v|
+Z38 !s107 C:/Users/SAMSUNG/Documents/Graduate_Project/Workload_Allocator.v|
+Z39 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/Graduate_Project/Workload_Allocator.v|
 !i113 1
-R10
-R11
+R4
+R5
 n@workload@allocator
 vWorkloadAllocator_SAD
-R13
+R28
 !i10b 1
 !s100 G5c2UQP7Cffii8XeKB3m32
 Ig`Lz>dl1ZK4]Qz0X40BEm3
-R1
-R2
+R0
+R14
 w1760940737
 8C:/Users/htaek/Documents/Graduate_Project/Workload_Allocator.v
 FC:/Users/htaek/Documents/Graduate_Project/Workload_Allocator.v
 L0 3
-R6
+R3
 r1
 !s85 0
 31
-R14
+R29
 !s107 C:/Users/htaek/Documents/Graduate_Project/Workload_Allocator.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/htaek/Documents/Graduate_Project/Workload_Allocator.v|
 !i113 1
-R10
-R11
+R4
+R5
 n@workload@allocator_@s@a@d
 vWorkloadAllocator_SAD_Pipelined
 !s110 1760857262
 !i10b 1
 !s100 0]1^zfLO9o2A_MA3n0]f01
 IddgYeRW4SZ`[W=SBh^eID3
+R0
 R1
-R12
 w1760857257
-R15
-R16
+R36
+R37
 L0 3
-R6
+R3
 r1
 !s85 0
 31
 !s108 1760857262.000000
-R17
-R18
+R38
+R39
 !i113 1
-R10
-R11
+R4
+R5
 n@workload@allocator_@s@a@d_@pipelined
 vWorkloadAllocator_TiledInput
 !s110 1760777903
 !i10b 1
 !s100 5WJ2BYGi[_XV>8kPoO4Xi3
 I<fFnb=Ckb`DAic75B;5@h3
+R0
 R1
-R12
 w1760777836
-R15
-R16
+R36
+R37
 L0 3
-R6
+R3
 r1
 !s85 0
 31
 !s108 1760777902.000000
-R17
-R18
+R38
+R39
 !i113 1
-R10
-R11
+R4
+R5
 n@workload@allocator_@tiled@input

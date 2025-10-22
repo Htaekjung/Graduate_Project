@@ -27,6 +27,23 @@ module Top_module (
     reg        r_Valid;         // WorkloadAllocator 입력 유효 신호
     wire [7:0] oSNN_Result, oCNN_Result;
     wire oSNN_Valid, oCNN_Valid;
+
+	// uart #(.DBIT(8),.SB_TICK(16),.DVSR(100),.DVSR_WIDTH(7),.FIFO_W(5)) m3 //Baud rate of 100_000(115_200 produce errors). Computation: DVSR=clk_freq/(16*BaudRate)
+	// (
+	// 	.clk(clk_sdram),
+	// 	.rst_n(rst_n),
+	// 	.rd_uart(),
+	// 	.wr_uart(),
+	// 	.wr_data(),
+	// 	.rx(rx),
+	// 	.tx(),
+	// 	.rd_data(dout),
+	// 	.rx_done(rx_done),
+	// 	.tx_full()
+    // );
+
+
+
     // =========================================================
     // BRAM Interface 인스턴스
     // =========================================================
