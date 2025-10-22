@@ -3,36 +3,16 @@
    module uart
 	#(parameter DBIT=8,SB_TICK=16,DVSR=326,DVSR_WIDTH=9,FIFO_W=2) //DBIT=databits , SB_TICK=stop_bits tick(16 per bit) , DVSR= clk/(16*BaudRate) , DVSR_WIDTH=array size needed by DVSR,FIFO_WIDTH+fifo size(2^x) )
 	(
-	input clk,rst_n,
-	input rd_uart,wr_uart,
-	input[7:0] wr_data,
+	input clk,
+	input rst_n,
+	input rd_uart,
 	input rx,
-	output tx,
 	output[7:0] rd_data,
-	output rx_done,tx_full
+	output rx_done
     );
+	 
+	 wire s_tick;
 
-	 /*
-	 uart #(.DBIT(8),.SB_TICK(16),.DVSR(326),.DVSR_WIDTH(9),.FIFO_W(2)) m0
-	(
-		.clk(clk),
-		.rst_n(rst_n),
-		.rd_uart(rd_uart),
-		.wr_uart(wr_uart),
-		.wr_data(wr_data),
-		.rx(rx),
-		.tx(tx),
-		.rd_data(rd_data),
-		.rx_empty(rx_empty),
-		.tx_full()
-    );
-	 */
-
-	 
-	 wire s_tick,rx_done_tick,empty;
-	 wire[7:0] dout,rd_data_tx;
-	 
-	 
 	baud_generator #(.N(DVSR),.N_width(DVSR_WIDTH)) m0
 	(
 	.clk(clk),
@@ -49,19 +29,5 @@
 		.rx_done_tick(rx_done),
 		.dout(rd_data)
     );
-	 
-	 
-	 fifo #(.W(FIFO_W),.B(DBIT)) m2
-	(
-		.clk(clk),
-		.rst_n(rst_n),
-		.wr(),
-		.rd(),
-		.wr_data(),
-		.rd_data(),
-		.full(),
-		.empty()
-    );
-
 
 endmodule

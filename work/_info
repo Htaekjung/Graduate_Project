@@ -331,13 +331,13 @@ R4
 R5
 n@top_module
 vuart
-!s110 1761120727
+!s110 1761120877
 !i10b 1
-!s100 Z8DRH01YCOd]7l[KRZk4m1
-I5Y09VdJ7P0TzO>gKM8fgj0
+!s100 l6ia;^L3Y;oCIK?af3z^N3
+I<Jf1R2`68TMGYk89:zDAC0
 R0
 R1
-w1761120723
+w1761120755
 8C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart.v
 FC:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart.v
 L0 3
@@ -345,7 +345,7 @@ R3
 r1
 !s85 0
 31
-!s108 1761120727.000000
+!s108 1761120877.000000
 !s107 C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Documents/FPGA_RealTime_and_Static_Sobel_Edge_Detection/src2/uart.v|
 !i113 1
