@@ -1,0 +1,252 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_lite/18.1
+vBram
+Z0 !s110 1761069156
+!i10b 1
+!s100 YfjfY7[4ZR2^d1OBkR=Ta1
+IHI8X6MM?Lh_>oEKn^7hol2
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog
+Z3 w1760878042
+Z4 8C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/BRAM.v
+Z5 FC:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/BRAM.v
+L0 1
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1761069156.000000
+Z8 !s107 C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/BRAM.v|
+Z9 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/BRAM.v|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+n@bram
+vBram_interface_FIFO
+!s110 1761091642
+!i10b 1
+!s100 L:DcGoebKYzGN`jUXOi]T1
+I9_Qohe6m4eR8nLSYc4?5Y0
+R1
+R2
+w1761091497
+8C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Bram_interface_FIFO.v
+FC:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Bram_interface_FIFO.v
+L0 1
+R6
+r1
+!s85 0
+31
+!s108 1761091642.000000
+!s107 C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Bram_interface_FIFO.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Bram_interface_FIFO.v|
+!i113 1
+R10
+R11
+n@bram_interface_@f@i@f@o
+vBram_interface_Tiling
+R0
+!i10b 1
+!s100 KQKEEnV=B0<Gb`NPFziG92
+Ii?^4o;o5F^[45;>8ginnV0
+R1
+R2
+w1760875400
+8C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Bram_interface_Tiling.v
+FC:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Bram_interface_Tiling.v
+L0 2
+R6
+r1
+!s85 0
+31
+R7
+!s107 C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Bram_interface_Tiling.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Bram_interface_Tiling.v|
+!i113 1
+R10
+R11
+n@bram_interface_@tiling
+vBram_Tiling
+R0
+!i10b 1
+!s100 zOV<M_9ANihQ:OiK0fcb03
+IGS:ah=80BEPodK_P5[7Uo1
+R1
+R2
+R3
+R4
+R5
+L0 63
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+n@bram_@tiling
+vCNN_Core
+Z12 !s110 1761092104
+!i10b 1
+!s100 HV:bjPhA17BaKD5k@@bOK3
+ILfg=PhWSWTPaz;7539TeH1
+R1
+R2
+w1761092081
+8C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/CNN_Core.v
+FC:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/CNN_Core.v
+L0 167
+R6
+r1
+!s85 0
+31
+Z13 !s108 1761092104.000000
+!s107 C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/CNN_Core.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/CNN_Core.v|
+!i113 1
+R10
+R11
+n@c@n@n_@core
+vSNN_Core
+R0
+!i10b 1
+!s100 XOT2PIS>Y=W`L8_UE42_J2
+I9U2iP];Le@McUUYQe>Qo20
+R1
+R2
+w1761069051
+8C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/SNN_Core.v
+FC:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/SNN_Core.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+!s107 C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/SNN_Core.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/SNN_Core.v|
+!i113 1
+R10
+R11
+n@s@n@n_@core
+vtb_CNN_Core
+!s110 1761071175
+!i10b 1
+!s100 <NBXIeiA::YDjj1o1GZ^L2
+IoV2@Dg_iWG^JSSP8B_5D01
+R1
+R2
+w1761071140
+8C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/tb_CNN_Core.v
+FC:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/tb_CNN_Core.v
+L0 3
+R6
+r1
+!s85 0
+31
+!s108 1761071175.000000
+!s107 C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/tb_CNN_Core.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/tb_CNN_Core.v|
+!i113 1
+R10
+R11
+ntb_@c@n@n_@core
+vtb_SNN_Core
+!s110 1761069157
+!i10b 1
+!s100 XcLSEPWAV6l<JIZ?_fb^e1
+IoCC0fFHS8Yl3W1E@5oY[W0
+R1
+R2
+w1761067060
+8C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/tb_SNN_Core.v
+FC:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/tb_SNN_Core.v
+L0 3
+R6
+r1
+!s85 0
+31
+R7
+!s107 C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/tb_SNN_Core.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/tb_SNN_Core.v|
+!i113 1
+R10
+R11
+ntb_@s@n@n_@core
+vtb_Topmodule
+!s110 1761092831
+!i10b 1
+!s100 XS;IzNdWUWRWjnk8MV6Xg3
+Ina<YGMN>MDM;_W`_AE]eB1
+R1
+R2
+w1761092827
+8C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Top_Testbench.v
+FC:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Top_Testbench.v
+L0 3
+R6
+r1
+!s85 0
+31
+!s108 1761092831.000000
+!s107 C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Top_Testbench.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Top_Testbench.v|
+!i113 1
+R10
+R11
+ntb_@topmodule
+vTop_module
+R12
+!i10b 1
+!s100 ]z0<7Co<NEBaK;kR2fcfB0
+IT@]04`TzO1fSNRe`o]R`]2
+R1
+R2
+w1761092100
+8C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Top_module.v
+FC:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Top_module.v
+L0 3
+R6
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Top_module.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Top_module.v|
+!i113 1
+R10
+R11
+n@top_module
+vWorkloadAllocator_SAD
+R0
+!i10b 1
+!s100 G5c2UQP7Cffii8XeKB3m32
+I<??3`2DeOE7B[dj?FKAlW0
+R1
+R2
+w1760883136
+8C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Workload_Allocator.v
+FC:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Workload_Allocator.v
+L0 3
+R6
+r1
+!s85 0
+31
+R7
+!s107 C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Workload_Allocator.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/SAMSUNG/Downloads/Graduate_Project/Verilog/Workload_Allocator.v|
+!i113 1
+R10
+R11
+n@workload@allocator_@s@a@d
